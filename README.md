@@ -1,0 +1,2 @@
+# WizardSData
+Synthetic datasets creation. 
