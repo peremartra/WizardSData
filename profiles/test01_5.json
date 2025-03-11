@@ -1,0 +1,74 @@
+{
+    "profiles": [
+        {
+            "id": 1,
+            "age": 30,
+            "marital_status": "Single",
+            "country": "Spain",
+            "residence_area": "Urban",
+            "profession": "Software Developer",
+            "employment_status": "Employed",
+            "financial_products": ["Savings account", "Tech stocks"],
+            "financial_goal": "Save for house deposit",
+            "investment_horizon": "Medium-term",
+            "risk_tolerance": "Moderate",
+            "financial_knowledge": "Intermediate"
+        },
+        {
+            "id": 2,
+            "age": 45,
+            "marital_status": "Married",
+            "country": "USA",
+            "residence_area": "Suburb",
+            "profession": "Marketing Manager",
+            "employment_status": "Employed",
+            "financial_products": ["401k", "Index funds"],
+            "financial_goal": "Plan for retirement",
+            "investment_horizon": "Long-term",
+            "risk_tolerance": "Low",
+            "financial_knowledge": "Intermediate"
+        },
+        {
+            "id": 3,
+            "age": 60,
+            "marital_status": "Widowed",
+            "country": "UK",
+            "residence_area": "Urban",
+            "profession": "Retired Banker",
+            "employment_status": "Retired",
+            "financial_products": ["Bonds", "Real estate investments"],
+            "financial_goal": "Preserve capital for estate planning",
+            "investment_horizon": "Long-term",
+            "risk_tolerance": "Low",
+            "financial_knowledge": "Advanced"
+        },
+        {
+            "id": 4,
+            "age": 28,
+            "marital_status": "Single",
+            "country": "Germany",
+            "residence_area": "Urban",
+            "profession": "Freelance Designer",
+            "employment_status": "Self-employed",
+            "financial_products": ["Savings account"],
+            "financial_goal": "Save for future business expansion",
+            "investment_horizon": "Short-term",
+            "risk_tolerance": "Moderate",
+            "financial_knowledge": "Basic"
+        },
+        {
+            "id": 5,
+            "age": 50,
+            "marital_status": "Married",
+            "country": "France",
+            "residence_area": "Rural",
+            "profession": "Farmer",
+            "employment_status": "Self-employed",
+            "financial_products": ["Agricultural subsidies", "Land investments"],
+            "financial_goal": "Secure long-term land investment",
+            "investment_horizon": "Long-term",
+            "risk_tolerance": "Moderate",
+            "financial_knowledge": "Intermediate"
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+LICENSE
+README.md
+core.py
+pyproject.toml
+wizardsdata.egg-info/PKG-INFO
+wizardsdata.egg-info/SOURCES.txt
+wizardsdata.egg-info/dependency_links.txt
+wizardsdata.egg-info/requires.txt
+wizardsdata.egg-info/top_level.txt

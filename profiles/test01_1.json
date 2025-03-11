@@ -1,0 +1,18 @@
+{
+    "profiles": [
+        {
+            "id": 1,
+            "age": 30,
+            "marital_status": "Single",
+            "country": "Spain",
+            "residence_area": "Urban",
+            "profession": "Software Developer",
+            "employment_status": "Freelance",
+            "financial_products": ["Savings account", "Tech stocks"],
+            "financial_goal": "Save for house deposit",
+            "investment_horizon": "Medium-term",
+            "risk_tolerance": "High",
+            "financial_knowledge": "Low"
+        }
+    ]
+}
