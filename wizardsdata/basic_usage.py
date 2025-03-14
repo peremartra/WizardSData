@@ -16,15 +16,15 @@ def main():
     # Configure the library
     missing = wsd.set_config(
         API_KEY="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",  # Replace with your actual API key
-        template_client_prompt="prompts/financial_client_01.j2",
-        template_advisor_prompt="prompts/financial_advisor_01.j2",
-        file_profiles="profiles/test01_1.json",
-        file_output="outputs/test_dataset01.json",
+        template_client_prompt="templates/financial01/prompts/financial_client_01.j2",
+        template_advisor_prompt="templates/financial01/prompts/financial_advisor_01.j2",
+        file_profiles="templates/financial01/profiles/financial_sample01_2.json",
+        file_output="templates/financial01/outputs/test_dataset01_2.json",
         model_client="gpt-4o-mini",
         model_advisor="gpt-4o-mini",
         # Optional parameters with custom values
         temperature_client=0.8,
-        max_recommended_questions=5
+        max_recommended_questions=10
     )
     
     # Check for missing parameters
