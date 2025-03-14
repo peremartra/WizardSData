@@ -1,4 +1,7 @@
+
 # WizardSData
+
+![Generate Syntetic Conversations](/images/wizardsdata_banner.png)
 
 A Python library for generating conversation datasets using language models. WizardSData automates the creation of simulated conversations between a client and an advisor, using templates and model APIs.
 
