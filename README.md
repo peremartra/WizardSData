@@ -188,6 +188,8 @@ Profiles should be provided in JSON format:
 }
 ```
 
+All fields, but `id` are optional and you can create your own fields. 
+
 ## Configuration Parameters
 
 ### Mandatory Parameters
