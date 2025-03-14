@@ -5,17 +5,66 @@
 
 A Python library for generating conversation datasets using language models. WizardSData automates the creation of simulated conversations between a client and an advisor, using templates and model APIs.
 
+Esta libreria es perfecta para generar dialogos de sectores altamente regulados como Finanzas o Salud, donde el uso de los datos de los clientes esta altamente protegido. 
+
+## ¿Como funciona? 
+La libreria simula la conversación entre dos personas, una de ellas puede ser el cliente y la otra el advisor. Los roles de los clientes se definen a mano antes de usar la libreria, en el directorio examples podeis encontrar diferentes ejemplos. 
+
+### Creación de los perfiles. 
+Vamos a analizar uno de ellos: financial01_2.json. 
+
+```json
+{
+    "profiles": [
+        {
+            "id": 1,
+            "age": 30,
+            "marital_status": "Single",
+            "country": "Spain",
+            "residence_area": "Urban",
+            "profession": "Software Developer",
+            "employment_status": "Employed",
+            "financial_products": ["Savings account", "Tech stocks"],
+            "financial_goal": "Save for house deposit",
+            "investment_horizon": "Medium-term",
+            "risk_tolerance": "Moderate",
+            "financial_knowledge": "Intermediate"
+        },
+        {
+            "id": 2,
+            "age": 45,
+            "marital_status": "Married",
+            "country": "USA",
+            "residence_area": "Suburb",
+            "profession": "Marketing Manager",
+            "employment_status": "Employed",
+            "financial_products": ["401k", "Index funds"],
+            "financial_goal": "Plan for retirement",
+            "investment_horizon": "Long-term",
+            "risk_tolerance": "Low",
+            "financial_knowledge": "Intermediate"
+        }
+    ]
+}
+```
+En este fichero json se estan definiendo dos perfiles diferentes: 
+* Un informatico soltero español de 30 años que quiere información para ahorrar para comprarse una casa.
+* Un Manager de marqueting de 45 años que quiere hacer un plan de pensiones.
+Los campos a utilizar són totalmente libres, es decir, vuestros perfiles pueden contener cualquie información que considereis necesaria. Esta información se utilizará para crear los prompts que se enviaran al Modelo de lenguaje con el fin de que simule el comportamiento de cada uno de los dos roles.
+
+### Prompt templates. 
+Se debe definir una plantilla para cada uno de los prompts, veamos las dos usadas en este ejemplo: 
+
+
 ## Installation
 
-```bash
-pip install wizardsdata
-```
-
-Or install directly from GitHub:
+Install directly from GitHub:
 
 ```bash
 pip install git+https://github.com/peremartra/WizardSData.git
 ```
+
+
 
 ## Features
 
