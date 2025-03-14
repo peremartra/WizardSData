@@ -11,7 +11,7 @@ pip install wizardsdata
 Or install directly from GitHub:
 
 ```bash
-pip install git+https://github.com/yourusername/WizardSData.git
+pip install git+https://github.com/peremartra/WizardSData.git
 ```
 
 ## Features
