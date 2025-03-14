@@ -5,13 +5,21 @@
 
 A Python library for generating conversation datasets using language models. WizardSData automates the creation of simulated conversations between a client and an advisor, using templates and model APIs.
 
-Esta libreria es perfecta para generar dialogos de sectores altamente regulados como Finanzas o Salud, donde el uso de los datos de los clientes esta altamente protegido. 
+This library is perfect for generating dialogues in highly regulated sectors like Finance or Healthcare, where the use of customer data is strictly protected.
 
-## ¿Como funciona? 
-La libreria simula la conversación entre dos personas, una de ellas puede ser el cliente y la otra el advisor. Los roles de los clientes se definen a mano antes de usar la libreria, en el directorio examples podeis encontrar diferentes ejemplos. 
+The generated dialogues can be used to train or fine-tune large language models.
 
-### Creación de los perfiles. 
-Vamos a analizar uno de ellos: financial01_2.json. 
+## ¿How it works? 
+The library simulates a conversation between two people. One initiates the dialogue and is represented by one of the profiles from the `profiles` file. The other acts as the respondent, generated using information contained, also, in the profile. Therefore, if desired, the profile can include information about two different people, turning it into a conversation profile instead of a role profile.
+
+For the library to start generating conversations, it requires a profiles file and two prompt templates. Each profile in the `profiles` file will define the personality or personalities part of the conversation. Different examples can be found in the `templates` directory.
+
+A basic usage example can be found in `usage_examples/basic_usage.py`.
+
+### Let's analyze one of the examples: financial01. 
+In this example, we find different profile files that only vary in the number of profiles they contain. They represent various profiles from Retail Banking, requesting information about products such as home deposit accounts, pension plans, or medium and long-term investments.
+#### Profile Creation 
+In the `profiles` directory, you will find different files containing varying numbers of profiles. Let's take a look at  `financial_sample01_2.json`
 
 ```json
 {
@@ -47,15 +55,54 @@ Vamos a analizar uno de ellos: financial01_2.json.
     ]
 }
 ```
-En este fichero json se estan definiendo dos perfiles diferentes: 
-* Un informatico soltero español de 30 años que quiere información para ahorrar para comprarse una casa.
-* Un Manager de marqueting de 45 años que quiere hacer un plan de pensiones.
-Los campos a utilizar són totalmente libres, es decir, vuestros perfiles pueden contener cualquie información que considereis necesaria. Esta información se utilizará para crear los prompts que se enviaran al Modelo de lenguaje con el fin de que simule el comportamiento de cada uno de los dos roles.
+This JSON file defines two different profiles:
+* A 30-year-old single Spanish IT professional looking for information on how to save for buying a house.
+* A 45-year-old marketing manager interested in setting up a pension plan.
 
-### Prompt templates. 
-Se debe definir una plantilla para cada uno de los prompts, veamos las dos usadas en este ejemplo: 
+The fields to use are completely flexible, meaning the profiles can include any information you consider necessary. This information will be used to create the prompts sent to the language model to simulate the behavior of each of the two roles.
 
+#### Prompt templates. 
+A template must be defined for each prompt. Let's look at the two templates used in this example, both of which can be found in the prompts directory.
 
+**Client Prompt Template**
+```j2
+You are a {{ profile.age }}-year-old {{ profile.marital_status | lower }} client living in a {{ profile.residence_area | lower }} area of {{ profile.country }}. 
+You work as a {{ profile.profession | lower }} and have {{ profile.financial_knowledge | lower }} financial knowledge. 
+You currently have {{ profile.financial_products | join(' and ') }}. 
+Your main financial goal is to {{ profile.financial_goal | lower }} in the {{ profile.investment_horizon | lower }}. 
+You have a {{ profile.risk_tolerance | lower }} risk tolerance and are looking for advice on how to improve your saving and investment strategy.
+
+You are having a conversation with a financial advisor.
+- Your first message should be a BRIEF, CASUAL greeting. Don't reveal all your financial details at once.
+- For example, just say hi and mention ONE thing like wanting advice about saving or investments.
+- Keep your first message under 15-30 words. Let the conversation develop naturally.
+- In later messages, respond naturally to the advisor's questions, revealing information gradually.
+- Provide ONLY your next message as the client. Do not simulate the advisor's responses.
+- Start with a natural greeting if this is your first message.
+- Ask relevant questions or express concerns to achieve your goal.
+- Respond naturally and concisely to the advisor's previous message.
+- Try to conclude the conversation in fewer than {{ max_questions }} exchanges.
+- If you feel your questions are resolved, end your message with '[END]'.
+```
+
+**Advisor Prompt Template.** 
+```j2
+You are an expert financial advisor specializing in {{ profile.financial_goal | lower }}.
+
+Client Context:
+- The client is approximately {{ profile.age }} years old, {{ profile.marital_status | lower }}, and appears to be a {{ profile.profession | lower }} from {{ profile.country }}.
+- The client's financial goal is to {{ profile.financial_goal | lower }}.
+
+Instructions for the conversation:
+- Start by greeting the client and asking relevant, natural questions to understand their financial situation, preferences, and concerns.
+- Guide the conversation by asking about their current financial products, investment experience, and risk tolerance.
+- Provide clear, concise, and professional advice tailored to the client's goal and profile as the information is revealed.
+- Avoid using complex financial jargon unless necessary, and adapt your language to the client's knowledge level (you'll assess this through conversation).
+- Focus on actionable recommendations to help the client achieve their goal.
+- Keep the conversation realistic and friendly.
+- End the conversation naturally once you believe the client's doubts have been resolved, or explicitly conclude by saying '[END]'
+```
+As you can see, the information in both templates is filled using the data from the profile fields.
 ## Installation
 
 Install directly from GitHub:
