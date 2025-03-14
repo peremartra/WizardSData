@@ -1,0 +1,79 @@
+[
+    {
+        "id_conversation": "593d41a8-2ee8-47af-a2c8-4d65ddcdf8b6",
+        "topic": "Save for house deposit",
+        "sequence": 0,
+        "input": "Start conversation",
+        "output": "Hey there! I'm looking for some advice on saving for a house deposit."
+    },
+    {
+        "id_conversation": "593d41a8-2ee8-47af-a2c8-4d65ddcdf8b6",
+        "topic": "Save for house deposit",
+        "sequence": 1,
+        "input": "Hey there! I'm looking for some advice on saving for a house deposit.",
+        "output": "Hello! I'm glad you reached out for advice on saving for a house deposit. It's an exciting goal! To get started, could you share a bit about your current financial situation? For example, do you have any savings set aside already, and what is your target amount for the deposit?"
+    },
+    {
+        "id_conversation": "593d41a8-2ee8-47af-a2c8-4d65ddcdf8b6",
+        "topic": "Save for house deposit",
+        "sequence": 2,
+        "input": "Hello! I'm glad you reached out for advice on saving for a house deposit. It's an exciting goal! To get started, could you share a bit about your current financial situation? For example, do you have any savings set aside already, and what is your target amount for the deposit?",
+        "output": "Sure! I have a savings account and some tech stocks, but I'm not sure how much I need for a deposit. Do you have any tips on how to figure that out?"
+    },
+    {
+        "id_conversation": "593d41a8-2ee8-47af-a2c8-4d65ddcdf8b6",
+        "topic": "Save for house deposit",
+        "sequence": 3,
+        "input": "Sure! I have a savings account and some tech stocks, but I'm not sure how much I need for a deposit. Do you have any tips on how to figure that out?",
+        "output": "Absolutely! The amount you need for a house deposit can vary based on a few factors, such as the property prices in your desired area and the type of mortgage you plan to apply for. Generally, a deposit can range from 10% to 20% of the property's value.\n\nTo get a clearer picture, it might help to:\n\n1. **Research Property Prices**: Look up the average prices of homes in the area you're interested in. This will give you a target range for your deposit.\n   \n2. **Determine Your Comfort Level**: Think about how much you're comfortable putting down. A larger deposit can reduce your monthly mortgage payments and potentially eliminate private mortgage insurance (PMI).\n\nDo you have a specific area in mind where you'd like to buy? That could help us narrow down the numbers."
+    },
+    {
+        "id_conversation": "593d41a8-2ee8-47af-a2c8-4d65ddcdf8b6",
+        "topic": "Save for house deposit",
+        "sequence": 4,
+        "input": "Absolutely! The amount you need for a house deposit can vary based on a few factors, such as the property prices in your desired area and the type of mortgage you plan to apply for. Generally, a deposit can range from 10% to 20% of the property's value.\n\nTo get a clearer picture, it might help to:\n\n1. **Research Property Prices**: Look up the average prices of homes in the area you're interested in. This will give you a target range for your deposit.\n   \n2. **Determine Your Comfort Level**: Think about how much you're comfortable putting down. A larger deposit can reduce your monthly mortgage payments and potentially eliminate private mortgage insurance (PMI).\n\nDo you have a specific area in mind where you'd like to buy? That could help us narrow down the numbers.",
+        "output": "I'm looking at urban areas, maybe around Barcelona or Madrid. I've noticed prices can vary a lot. Any advice on where to look or how to budget for that?"
+    },
+    {
+        "id_conversation": "593d41a8-2ee8-47af-a2c8-4d65ddcdf8b6",
+        "topic": "Save for house deposit",
+        "sequence": 5,
+        "input": "I'm looking at urban areas, maybe around Barcelona or Madrid. I've noticed prices can vary a lot. Any advice on where to look or how to budget for that?",
+        "output": "Great choice! Both Barcelona and Madrid have vibrant real estate markets, but as you mentioned, prices can vary significantly based on the neighborhood. Here are some steps to help you budget effectively:\n\n1. **Set a Budget**: Once you have an idea of average property prices in your desired neighborhoods, calculate what a 10% to 20% deposit would be. For example, if a property costs \u20ac300,000, you\u2019d need between \u20ac30,000 and \u20ac60,000 for the deposit.\n\n2. **Create a Savings Plan**: Determine how much you can save each month. If you know your target deposit amount, divide that by the number of months until you want to buy. This will give you a monthly savings goal.\n\n3. **Consider Additional Costs**: Don't forget to account for other expenses related to buying a home, like notary fees, taxes, and renovation costs. These can add an additional 10% or more to your total budget.\n\n4. **Explore Different Areas**: If you're flexible with location, consider neighborhoods that are slightly outside the city center, as they may offer more affordable options.\n\n5. **Look for Saving Opportunities**: Since you have some investments in tech stocks, consider whether you want to keep them or shift some of those funds into a high-interest savings account or a dedicated savings account for your deposit.\n\nHow does this approach sound to you? Do you already have a monthly savings plan in mind?"
+    },
+    {
+        "id_conversation": "593d41a8-2ee8-47af-a2c8-4d65ddcdf8b6",
+        "topic": "Save for house deposit",
+        "sequence": 6,
+        "input": "Great choice! Both Barcelona and Madrid have vibrant real estate markets, but as you mentioned, prices can vary significantly based on the neighborhood. Here are some steps to help you budget effectively:\n\n1. **Set a Budget**: Once you have an idea of average property prices in your desired neighborhoods, calculate what a 10% to 20% deposit would be. For example, if a property costs \u20ac300,000, you\u2019d need between \u20ac30,000 and \u20ac60,000 for the deposit.\n\n2. **Create a Savings Plan**: Determine how much you can save each month. If you know your target deposit amount, divide that by the number of months until you want to buy. This will give you a monthly savings goal.\n\n3. **Consider Additional Costs**: Don't forget to account for other expenses related to buying a home, like notary fees, taxes, and renovation costs. These can add an additional 10% or more to your total budget.\n\n4. **Explore Different Areas**: If you're flexible with location, consider neighborhoods that are slightly outside the city center, as they may offer more affordable options.\n\n5. **Look for Saving Opportunities**: Since you have some investments in tech stocks, consider whether you want to keep them or shift some of those funds into a high-interest savings account or a dedicated savings account for your deposit.\n\nHow does this approach sound to you? Do you already have a monthly savings plan in mind?",
+        "output": "That sounds like a solid plan! I haven't set a monthly savings goal yet. Maybe I should start with a budget based on property prices. Any recommendations on how to get started with that?"
+    },
+    {
+        "id_conversation": "593d41a8-2ee8-47af-a2c8-4d65ddcdf8b6",
+        "topic": "Save for house deposit",
+        "sequence": 7,
+        "input": "That sounds like a solid plan! I haven't set a monthly savings goal yet. Maybe I should start with a budget based on property prices. Any recommendations on how to get started with that?",
+        "output": "Absolutely, starting with a budget based on property prices is a smart move! Here\u2019s a step-by-step approach to help you get started:\n\n1. **Research Property Prices**: Use real estate websites or apps to get a sense of the current market in Barcelona and Madrid. Look at listings to find average prices for homes in the neighborhoods you\u2019re interested in.\n\n2. **Calculate Your Target Deposit**: Once you have an idea of average property prices, calculate what a 10% to 20% deposit would be. For instance, if you find that homes are averaging \u20ac250,000, you\u2019d need between \u20ac25,000 and \u20ac50,000 for the deposit.\n\n3. **Assess Your Current Savings**: Take stock of your current savings account balance and any investments you might want to liquidate for this goal. This will give you a clearer picture of how much more you need to save.\n\n4. **Set a Timeline**: Decide when you\u2019d like to purchase your home. Is it within the next 1, 2, or 5 years? Your timeline will impact how much you need to save each month.\n\n5. **Create a Monthly Savings Goal**: Divide the amount you need for your deposit by the number of months until your target purchase date. For example, if you need \u20ac40,000 and plan to buy in 3 years (36 months), you\u2019d need to save about \u20ac1,111 per month.\n\n6. **Automate Your Savings**: Set up automatic transfers from your checking account to your savings account right after you receive your paycheck. This makes saving"
+    },
+    {
+        "id_conversation": "593d41a8-2ee8-47af-a2c8-4d65ddcdf8b6",
+        "topic": "Save for house deposit",
+        "sequence": 8,
+        "input": "Absolutely, starting with a budget based on property prices is a smart move! Here\u2019s a step-by-step approach to help you get started:\n\n1. **Research Property Prices**: Use real estate websites or apps to get a sense of the current market in Barcelona and Madrid. Look at listings to find average prices for homes in the neighborhoods you\u2019re interested in.\n\n2. **Calculate Your Target Deposit**: Once you have an idea of average property prices, calculate what a 10% to 20% deposit would be. For instance, if you find that homes are averaging \u20ac250,000, you\u2019d need between \u20ac25,000 and \u20ac50,000 for the deposit.\n\n3. **Assess Your Current Savings**: Take stock of your current savings account balance and any investments you might want to liquidate for this goal. This will give you a clearer picture of how much more you need to save.\n\n4. **Set a Timeline**: Decide when you\u2019d like to purchase your home. Is it within the next 1, 2, or 5 years? Your timeline will impact how much you need to save each month.\n\n5. **Create a Monthly Savings Goal**: Divide the amount you need for your deposit by the number of months until your target purchase date. For example, if you need \u20ac40,000 and plan to buy in 3 years (36 months), you\u2019d need to save about \u20ac1,111 per month.\n\n6. **Automate Your Savings**: Set up automatic transfers from your checking account to your savings account right after you receive your paycheck. This makes saving",
+        "output": "easier and helps you stay consistent. \n\nDoes that give you a clearer idea? I think setting a timeline will really help focus your savings efforts. Let me know if you have any more questions!"
+    },
+    {
+        "id_conversation": "593d41a8-2ee8-47af-a2c8-4d65ddcdf8b6",
+        "topic": "Save for house deposit",
+        "sequence": 9,
+        "input": "easier and helps you stay consistent. \n\nDoes that give you a clearer idea? I think setting a timeline will really help focus your savings efforts. Let me know if you have any more questions!",
+        "output": "Absolutely, automating your savings is a great way to ensure you stay on track! Setting a timeline will definitely help you focus your efforts and make your goal feel more achievable.\n\nIf you have any more questions about budgeting, saving strategies, or even the home-buying process itself, feel free to ask. I'm here to help you navigate this journey. Do you have any specific concerns or areas you\u2019d like more information on?"
+    },
+    {
+        "id_conversation": "593d41a8-2ee8-47af-a2c8-4d65ddcdf8b6",
+        "topic": "Save for house deposit",
+        "sequence": 10,
+        "input": "Absolutely, automating your savings is a great way to ensure you stay on track! Setting a timeline will definitely help you focus your efforts and make your goal feel more achievable.\n\nIf you have any more questions about budgeting, saving strategies, or even the home-buying process itself, feel free to ask. I'm here to help you navigate this journey. Do you have any specific concerns or areas you\u2019d like more information on?",
+        "output": "I think I have a good grasp on budgeting and saving now! I might look into automating my savings soon. Thanks for all the advice! I feel more confident about my plan."
+    }
+]

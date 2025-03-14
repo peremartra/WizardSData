@@ -2,8 +2,16 @@ LICENSE
 README.md
 core.py
 pyproject.toml
+setup.py
+wizardsdata/__init__.py
+wizardsdata/cli.py
+wizardsdata/config.py
+wizardsdata/generator.py
+wizardsdata/templates.py
+wizardsdata/utils.py
 wizardsdata.egg-info/PKG-INFO
 wizardsdata.egg-info/SOURCES.txt
 wizardsdata.egg-info/dependency_links.txt
+wizardsdata.egg-info/entry_points.txt
 wizardsdata.egg-info/requires.txt
 wizardsdata.egg-info/top_level.txt
