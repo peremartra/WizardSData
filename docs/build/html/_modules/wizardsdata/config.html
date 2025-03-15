@@ -1,0 +1,475 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>wizardsdata.config &mdash; WizardSData 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            WizardSData
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cli.html">Command Line Interface</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">WizardSData</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">wizardsdata.config</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for wizardsdata.config</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Set</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Configuration manager for the WizardSData conversation generation system.</span>
+<span class="sd">    This class handles all configuration parameters needed for generating conversations</span>
+<span class="sd">    between clients and advisors, providing methods for setting, retrieving, and validating</span>
+<span class="sd">    configuration values.</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        MANDATORY_PARAMS (set): Required configuration parameters that must be set before use.</span>
+<span class="sd">        DEFAULT_CONFIG (dict): Default values for optional parameters.</span>
+<span class="sd">    Configuration Parameters:</span>
+<span class="sd">        API_KEY (str): API key for accessing external language model services.</span>
+<span class="sd">        template_client_prompt (str): File path to the template used for client prompts.</span>
+<span class="sd">        template_advisor_prompt (str): File path to the template used for advisor prompts.</span>
+<span class="sd">        file_profiles (str): File path to the JSON containing conversation profiles.</span>
+<span class="sd">        file_output (str): File path where generated conversations will be saved.</span>
+<span class="sd">        model_client (dict): Model configuration for client responses.</span>
+<span class="sd">        model_advisor (dict): Model configuration for advisor responses.</span>
+<span class="sd">        Optional parameters with defaults:</span>
+<span class="sd">        temperature_client (float): Temperature for client model sampling (default: 0.7).</span>
+<span class="sd">        top_p_client (float): Top-p value for client model sampling (default: 0.95).</span>
+<span class="sd">        frequency_penalty_client (float): Frequency penalty for client model (default: 0.3).</span>
+<span class="sd">        max_tokens_client (int): Maximum tokens for client responses (default: 175).</span>
+<span class="sd">        max_recommended_questions (int): Maximum recommended questions to generate (default: 10).</span>
+<span class="sd">        temperature_advisor (float): Temperature for advisor model sampling (default: 0.5).</span>
+<span class="sd">        top_p_advisor (float): Top-p value for advisor model sampling (default: 0.9).</span>
+<span class="sd">        frequency_penalty_advisor (float): Frequency penalty for advisor model (default: 0.1).</span>
+<span class="sd">        max_tokens_advisor (int): Maximum tokens for advisor responses (default: 325).</span>
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; config = Config()</span>
+<span class="sd">        &gt;&gt;&gt; config.set(API_KEY=&quot;your-api-key&quot;, </span>
+<span class="sd">        ...           template_client_prompt=&quot;path/to/client_template.txt&quot;,</span>
+<span class="sd">        ...           template_advisor_prompt=&quot;path/to/advisor_template.txt&quot;,</span>
+<span class="sd">        ...           file_profiles=&quot;path/to/profiles.json&quot;,</span>
+<span class="sd">        ...           file_output=&quot;path/to/output.json&quot;,</span>
+<span class="sd">        ...           model_client={&quot;name&quot;: &quot;gpt-4&quot;},</span>
+<span class="sd">        ...           model_advisor={&quot;name&quot;: &quot;gpt-4&quot;})</span>
+<span class="sd">        &gt;&gt;&gt; if config.is_valid():</span>
+<span class="sd">        ...     print(&quot;Configuration is valid!&quot;)</span>
+<span class="sd">        ... else:</span>
+<span class="sd">        ...     print(f&quot;Missing parameters: {config.validate()}&quot;)</span>
+<span class="sd">        # Get specific configuration parameters</span>
+<span class="sd">        &gt;&gt;&gt; client_temp = config.get(&quot;temperature_client&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; all_params = config.get_all()</span>
+<span class="sd">    Notes:</span>
+<span class="sd">        - The validate() method checks if all mandatory parameters are set and if</span>
+<span class="sd">          specified file paths exist.</span>
+<span class="sd">        - Configuration parameters can be overridden by calling set() multiple times.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="c1"># Define mandatory parameters</span>
+    <span class="n">MANDATORY_PARAMS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;API_KEY&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;template_client_prompt&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;template_advisor_prompt&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;file_profiles&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;file_output&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;model_client&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;model_advisor&#39;</span>
+    <span class="p">}</span>
+    
+    <span class="c1"># Define default values for optional parameters</span>
+    <span class="n">DEFAULT_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="c1"># Client configuration</span>
+        <span class="s1">&#39;temperature_client&#39;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
+        <span class="s1">&#39;top_p_client&#39;</span><span class="p">:</span> <span class="mf">0.95</span><span class="p">,</span>
+        <span class="s1">&#39;frequency_penalty_client&#39;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+        <span class="s1">&#39;max_tokens_client&#39;</span><span class="p">:</span> <span class="mi">175</span><span class="p">,</span>
+        <span class="s1">&#39;max_recommended_questions&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        
+        <span class="c1"># Advisor configuration</span>
+        <span class="s1">&#39;temperature_advisor&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="s1">&#39;top_p_advisor&#39;</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">,</span>
+        <span class="s1">&#39;frequency_penalty_advisor&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="s1">&#39;max_tokens_advisor&#39;</span><span class="p">:</span> <span class="mi">325</span><span class="p">,</span>
+    <span class="p">}</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the configuration with default values.</span>
+<span class="sd">        This method initializes a new configuration object with the following steps:</span>
+<span class="sd">        1. Creates an empty configuration dictionary (_config)</span>
+<span class="sd">        2. Populates it with default values:</span>
+<span class="sd">            # Client configuration</span>
+<span class="sd">            &#39;temperature_client&#39;: 0.7,</span>
+<span class="sd">            &#39;top_p_client&#39;: 0.95,</span>
+<span class="sd">            &#39;frequency_penalty_client&#39;: 0.3,</span>
+<span class="sd">            &#39;max_tokens_client&#39;: 175,</span>
+<span class="sd">            &#39;max_recommended_questions&#39;: 10,</span>
+<span class="sd">            </span>
+<span class="sd">            # Advisor configuration</span>
+<span class="sd">            &#39;temperature_advisor&#39;: 0.5,</span>
+<span class="sd">            &#39;top_p_advisor&#39;: 0.9,</span>
+<span class="sd">            &#39;frequency_penalty_advisor&#39;: 0.1,</span>
+<span class="sd">            &#39;max_tokens_advisor&#39;: 325,</span>
+<span class="sd">        3. Initializes an empty set to track which parameters have been explicitly set</span>
+<span class="sd">           by the user (_set_params)</span>
+<span class="sd">        No parameters are required as it uses class-defined defaults.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Start with an empty config dictionary</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_config</span> <span class="o">=</span> <span class="p">{}</span>
+        
+        <span class="c1"># Add default values</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_CONFIG</span><span class="p">)</span>
+        
+        <span class="c1"># Keep track of what&#39;s been set</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_params</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set a configuration parameter</span>
+<span class="sd">       </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Update the configuration</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        
+        <span class="c1"># Track what&#39;s been set</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get a configuration parameter.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            param: Parameter name.</span>
+<span class="sd">            default: Default value if parameter doesn&#39;t exist.</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            The parameter value or the default value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_all</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get all configuration parameters.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Dictionary with all parameters.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Validate the configuration.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            List of missing mandatory parameters.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Check for missing mandatory parameters</span>
+        <span class="n">missing</span> <span class="o">=</span> <span class="p">[</span><span class="n">param</span> <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">MANDATORY_PARAMS</span> <span class="k">if</span> <span class="n">param</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">]</span>
+        
+        <span class="c1"># Check if file paths exist</span>
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;template_client_prompt&#39;</span><span class="p">,</span> <span class="s1">&#39;template_advisor_prompt&#39;</span><span class="p">,</span> <span class="s1">&#39;file_profiles&#39;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="p">[</span><span class="n">param</span><span class="p">]):</span>
+                    <span class="n">missing</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s2"> (file not found: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="p">[</span><span class="n">param</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">missing</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if configuration is valid.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            True if valid, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span>
+
+
+<span class="c1"># Create a global config instance</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="set_config">
+<a class="viewcode-back" href="../../api.html#wizardsdata.set_config">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_config</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set global configuration parameters and validate the resulting configuration.</span>
+<span class="sd">    </span>
+<span class="sd">        This function provides a convenient interface to set parameters in the global</span>
+<span class="sd">        Config instance. After setting the provided parameters, it automatically</span>
+<span class="sd">        validates the configuration and returns any validation errors.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            **kwargs: Key-value pairs for configuration parameters. </span>
+<span class="sd">            Configuration Parameters:</span>
+<span class="sd">            API_KEY (str): API key for accessing external language model services.</span>
+<span class="sd">            template_client_prompt (str): File path to the template used for client prompts.</span>
+<span class="sd">            template_advisor_prompt (str): File path to the template used for advisor prompts.</span>
+<span class="sd">            file_profiles (str): File path to the JSON containing conversation profiles.</span>
+<span class="sd">            file_output (str): File path where generated conversations will be saved.</span>
+<span class="sd">            model_client (dict): Model configuration for client responses.</span>
+<span class="sd">            model_advisor (dict): Model configuration for advisor responses.</span>
+<span class="sd">            </span>
+<span class="sd">            Optional parameters with defaults:</span>
+<span class="sd">            temperature_client (float): Temperature for client model sampling (default: 0.7).</span>
+<span class="sd">            top_p_client (float): Top-p value for client model sampling (default: 0.95).</span>
+<span class="sd">            frequency_penalty_client (float): Frequency penalty for client model (default: 0.3).</span>
+<span class="sd">            max_tokens_client (int): Maximum tokens for client responses (default: 175).</span>
+<span class="sd">            max_recommended_questions (int): Maximum recommended questions to generate (default: 10).</span>
+<span class="sd">            temperature_advisor (float): Temperature for advisor model sampling (default: 0.5).</span>
+<span class="sd">            top_p_advisor (float): Top-p value for advisor model sampling (default: 0.9).</span>
+<span class="sd">            frequency_penalty_advisor (float): Frequency penalty for advisor model (default: 0.1).</span>
+<span class="sd">            max_tokens_advisor (int): Maximum tokens for advisor responses (default: 325).</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            List[str]: A list of validation errors. Empty list if configuration is valid.</span>
+<span class="sd">            </span>
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; # Setting only partial mandatory parameters will return validation errors</span>
+<span class="sd">            &gt;&gt;&gt; errors = set_config(API_KEY=&quot;my-api-key&quot;, </span>
+<span class="sd">            ...                     template_client_prompt=&quot;templates/client.txt&quot;)</span>
+<span class="sd">            &gt;&gt;&gt; if errors:</span>
+<span class="sd">            ...     print(f&quot;Configuration is incomplete: {errors}&quot;)</span>
+<span class="sd">            ...     # Output: Configuration is incomplete: [&#39;template_advisor_prompt&#39;, &#39;file_profiles&#39;, &#39;file_output&#39;, &#39;model_client&#39;, &#39;model_advisor&#39;]</span>
+<span class="sd">            &gt;&gt;&gt; </span>
+<span class="sd">            &gt;&gt;&gt; # Setting all mandatory parameters for a valid configuration</span>
+<span class="sd">            &gt;&gt;&gt; errors = set_config(</span>
+<span class="sd">            ...     API_KEY=&quot;my-api-key&quot;,</span>
+<span class="sd">            ...     template_client_prompt=&quot;templates/client.txt&quot;,</span>
+<span class="sd">            ...     template_advisor_prompt=&quot;templates/advisor.txt&quot;,</span>
+<span class="sd">            ...     file_profiles=&quot;data/profiles.json&quot;,</span>
+<span class="sd">            ...     file_output=&quot;output/conversations.json&quot;,</span>
+<span class="sd">            ...     model_client={&quot;name&quot;: &quot;gpt-4&quot;},</span>
+<span class="sd">            ...     model_advisor={&quot;name&quot;: &quot;gpt-4&quot;}</span>
+<span class="sd">            ... )</span>
+<span class="sd">            &gt;&gt;&gt; if not errors:</span>
+<span class="sd">            ...     print(&quot;Configuration is valid!&quot;)</span>
+<span class="sd">            </span>
+<span class="sd">        Notes:</span>
+<span class="sd">            - This updates only the parameters specified in kwargs; other parameters</span>
+<span class="sd">            retain their current values.</span>
+<span class="sd">            - See the Config class for a complete list of valid parameters.    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    
+    <span class="n">config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">config</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="get_config">
+<a class="viewcode-back" href="../../api.html#wizardsdata.get_config">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_config</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the current global configuration.</span>
+<span class="sd">    </span>
+<span class="sd">    This function retrieves all current configuration parameters from the global</span>
+<span class="sd">    Config instance, including both explicitly set values and default values.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Dict[str, Any]: Dictionary with all configuration parameters.</span>
+<span class="sd">        </span>
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; full_config = get_config()</span>
+<span class="sd">        &gt;&gt;&gt; print(f&quot;Client temperature: {full_config[&#39;temperature_client&#39;]}&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; </span>
+<span class="sd">        &gt;&gt;&gt; # Get specific parameters directly from the config instance</span>
+<span class="sd">        &gt;&gt;&gt; from wizardsdata.config import config</span>
+<span class="sd">        &gt;&gt;&gt; print(f&quot;API Key: {config.get(&#39;API_KEY&#39;)}&quot;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">config</span><span class="o">.</span><span class="n">get_all</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="is_config_valid">
+<a class="viewcode-back" href="../../api.html#wizardsdata.is_config_valid">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_config_valid</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Check if the current global configuration is valid.</span>
+<span class="sd">    </span>
+<span class="sd">    This function checks if all mandatory parameters are set and if specified</span>
+<span class="sd">    file paths exist.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if the configuration is valid, False otherwise.</span>
+<span class="sd">        </span>
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; if not is_config_valid():</span>
+<span class="sd">        ...     print(&quot;Please set all required configuration parameters&quot;)</span>
+<span class="sd">        ...     # Show what&#39;s missing</span>
+<span class="sd">        ...     from wizardsdata.config import config</span>
+<span class="sd">        ...     print(f&quot;Missing: {config.validate()}&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    Notes:</span>
+<span class="sd">        - Mandatory parameters are defined in Config.MANDATORY_PARAMS</span>
+<span class="sd">        - The function also checks if specified file paths exist</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">config</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="save_config">
+<a class="viewcode-back" href="../../api.html#wizardsdata.save_config">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">save_config</span><span class="p">(</span><span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Save the current global configuration to a JSON file.</span>
+<span class="sd">    </span>
+<span class="sd">    This function exports all configuration parameters (including defaults)</span>
+<span class="sd">    to a specified JSON file for later reuse.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        file_path (str): Path where the configuration file will be saved.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if the save operation was successful, False otherwise.</span>
+<span class="sd">        </span>
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; success = save_config(&quot;config/my_project_config.json&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; if success:</span>
+<span class="sd">        ...     print(&quot;Configuration saved successfully!&quot;)</span>
+<span class="sd">        ... else:</span>
+<span class="sd">        ...     print(&quot;Failed to save configuration&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    Notes:</span>
+<span class="sd">        - The saved file uses JSON format with 4-space indentation</span>
+<span class="sd">        - Both explicitly set and default values are saved</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">get_all</span><span class="p">(),</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+
+<div class="viewcode-block" id="load_config">
+<a class="viewcode-back" href="../../api.html#wizardsdata.load_config">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_config</span><span class="p">(</span><span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load configuration from a JSON file into the global config instance.</span>
+<span class="sd">    </span>
+<span class="sd">    This function reads a previously saved configuration file and updates</span>
+<span class="sd">    the global Config instance with those values.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        file_path (str): Path to the configuration JSON file.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if the load operation was successful, False otherwise.</span>
+<span class="sd">        </span>
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; success = load_config(&quot;config/my_project_config.json&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; if success:</span>
+<span class="sd">        ...     print(&quot;Configuration loaded successfully!&quot;)</span>
+<span class="sd">        ...     # Check if it&#39;s complete</span>
+<span class="sd">        ...     if is_config_valid():</span>
+<span class="sd">        ...         print(&quot;And it&#39;s valid!&quot;)</span>
+<span class="sd">        ... else:</span>
+<span class="sd">        ...     print(&quot;Failed to load configuration&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    Notes:</span>
+<span class="sd">        - This overwrites any previously set parameters with values from the file</span>
+<span class="sd">        - Parameters not specified in the file retain their current values</span>
+<span class="sd">        - The function silently catches and handles any exceptions during loading.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">config_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="o">**</span><span class="n">config_data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Your Name.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,672 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Reference &mdash; WizardSData 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Command Line Interface" href="cli.html" />
+    <link rel="prev" title="Usage" href="usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            WizardSData
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-functions">Configuration Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#wizardsdata.set_config"><code class="docutils literal notranslate"><span class="pre">set_config()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wizardsdata.get_config"><code class="docutils literal notranslate"><span class="pre">get_config()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wizardsdata.is_config_valid"><code class="docutils literal notranslate"><span class="pre">is_config_valid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wizardsdata.save_config"><code class="docutils literal notranslate"><span class="pre">save_config()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wizardsdata.load_config"><code class="docutils literal notranslate"><span class="pre">load_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#generation-functions">Generation Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#wizardsdata.start_generation"><code class="docutils literal notranslate"><span class="pre">start_generation()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#alternative-module-view">Alternative Module View</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">set_config()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">get_config()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">is_config_valid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">save_config()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">load_config()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">start_generation()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command Line Interface</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">WizardSData</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">API Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading"></a></h1>
+<p>This page documents the public API functions of the WizardSData library.</p>
+<section id="configuration-functions">
+<h2>Configuration Functions<a class="headerlink" href="#configuration-functions" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.set_config">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.</span></span><span class="sig-name descname"><span class="pre">set_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wizardsdata/config.html#set_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.set_config" title="Link to this definition"></a></dt>
+<dd><p>Set global configuration parameters and validate the resulting configuration.</p>
+<p>This function provides a convenient interface to set parameters in the global
+Config instance. After setting the provided parameters, it automatically
+validates the configuration and returns any validation errors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>**kwargs</strong> – Key-value pairs for configuration parameters.</p></li>
+<li><p><strong>Parameters</strong> (<em>Configuration</em>)</p></li>
+<li><p><strong>API_KEY</strong> (<em>str</em>) – API key for accessing external language model services.</p></li>
+<li><p><strong>template_client_prompt</strong> (<em>str</em>) – File path to the template used for client prompts.</p></li>
+<li><p><strong>template_advisor_prompt</strong> (<em>str</em>) – File path to the template used for advisor prompts.</p></li>
+<li><p><strong>file_profiles</strong> (<em>str</em>) – File path to the JSON containing conversation profiles.</p></li>
+<li><p><strong>file_output</strong> (<em>str</em>) – File path where generated conversations will be saved.</p></li>
+<li><p><strong>model_client</strong> (<em>dict</em>) – Model configuration for client responses.</p></li>
+<li><p><strong>model_advisor</strong> (<em>dict</em>) – Model configuration for advisor responses.</p></li>
+<li><p><strong>defaults</strong> (<em>Optional parameters with</em>)</p></li>
+<li><p><strong>temperature_client</strong> (<em>float</em>) – Temperature for client model sampling (default: 0.7).</p></li>
+<li><p><strong>top_p_client</strong> (<em>float</em>) – Top-p value for client model sampling (default: 0.95).</p></li>
+<li><p><strong>frequency_penalty_client</strong> (<em>float</em>) – Frequency penalty for client model (default: 0.3).</p></li>
+<li><p><strong>max_tokens_client</strong> (<em>int</em>) – Maximum tokens for client responses (default: 175).</p></li>
+<li><p><strong>max_recommended_questions</strong> (<em>int</em>) – Maximum recommended questions to generate (default: 10).</p></li>
+<li><p><strong>temperature_advisor</strong> (<em>float</em>) – Temperature for advisor model sampling (default: 0.5).</p></li>
+<li><p><strong>top_p_advisor</strong> (<em>float</em>) – Top-p value for advisor model sampling (default: 0.9).</p></li>
+<li><p><strong>frequency_penalty_advisor</strong> (<em>float</em>) – Frequency penalty for advisor model (default: 0.1).</p></li>
+<li><p><strong>max_tokens_advisor</strong> (<em>int</em>) – Maximum tokens for advisor responses (default: 325).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of validation errors. Empty list if configuration is valid.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>List</em>[<em>str</em>]</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Setting only partial mandatory parameters will return validation errors</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">errors</span> <span class="o">=</span> <span class="n">set_config</span><span class="p">(</span><span class="n">API_KEY</span><span class="o">=</span><span class="s2">&quot;my-api-key&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                    <span class="n">template_client_prompt</span><span class="o">=</span><span class="s2">&quot;templates/client.txt&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Configuration is incomplete: </span><span class="si">{</span><span class="n">errors</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1"># Output: Configuration is incomplete: [&#39;template_advisor_prompt&#39;, &#39;file_profiles&#39;, &#39;file_output&#39;, &#39;model_client&#39;, &#39;model_advisor&#39;]</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Setting all mandatory parameters for a valid configuration</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">errors</span> <span class="o">=</span> <span class="n">set_config</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">API_KEY</span><span class="o">=</span><span class="s2">&quot;my-api-key&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">template_client_prompt</span><span class="o">=</span><span class="s2">&quot;templates/client.txt&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">template_advisor_prompt</span><span class="o">=</span><span class="s2">&quot;templates/advisor.txt&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">file_profiles</span><span class="o">=</span><span class="s2">&quot;data/profiles.json&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">file_output</span><span class="o">=</span><span class="s2">&quot;output/conversations.json&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">model_client</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;gpt-4&quot;</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="n">model_advisor</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;gpt-4&quot;</span><span class="p">}</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="ow">not</span> <span class="n">errors</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Configuration is valid!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>This updates only the parameters specified in kwargs; other parameters</p></li>
+</ul>
+<p>retain their current values.
+- See the Config class for a complete list of valid parameters.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.get_config">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.</span></span><span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wizardsdata/config.html#get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.get_config" title="Link to this definition"></a></dt>
+<dd><p>Get the current global configuration.</p>
+<p>This function retrieves all current configuration parameters from the global
+Config instance, including both explicitly set values and default values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary with all configuration parameters.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Dict</em>[<em>str</em>, <em>Any</em>]</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">full_config</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Client temperature: </span><span class="si">{</span><span class="n">full_config</span><span class="p">[</span><span class="s1">&#39;temperature_client&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get specific parameters directly from the config instance</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">wizardsdata.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;API Key: </span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;API_KEY&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.is_config_valid">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.</span></span><span class="sig-name descname"><span class="pre">is_config_valid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wizardsdata/config.html#is_config_valid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.is_config_valid" title="Link to this definition"></a></dt>
+<dd><p>Check if the current global configuration is valid.</p>
+<p>This function checks if all mandatory parameters are set and if specified
+file paths exist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the configuration is valid, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>bool</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="ow">not</span> <span class="n">is_config_valid</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please set all required configuration parameters&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1"># Show what&#39;s missing</span>
+<span class="gp">... </span>    <span class="kn">from</span><span class="w"> </span><span class="nn">wizardsdata.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Missing: </span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>Mandatory parameters are defined in Config.MANDATORY_PARAMS</p></li>
+<li><p>The function also checks if specified file paths exist</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.save_config">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.</span></span><span class="sig-name descname"><span class="pre">save_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wizardsdata/config.html#save_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.save_config" title="Link to this definition"></a></dt>
+<dd><p>Save the current global configuration to a JSON file.</p>
+<p>This function exports all configuration parameters (including defaults)
+to a specified JSON file for later reuse.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Path where the configuration file will be saved.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the save operation was successful, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>bool</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">success</span> <span class="o">=</span> <span class="n">save_config</span><span class="p">(</span><span class="s2">&quot;config/my_project_config.json&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Configuration saved successfully!&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Failed to save configuration&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The saved file uses JSON format with 4-space indentation</p></li>
+<li><p>Both explicitly set and default values are saved</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.load_config">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.</span></span><span class="sig-name descname"><span class="pre">load_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wizardsdata/config.html#load_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.load_config" title="Link to this definition"></a></dt>
+<dd><p>Load configuration from a JSON file into the global config instance.</p>
+<p>This function reads a previously saved configuration file and updates
+the global Config instance with those values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Path to the configuration JSON file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the load operation was successful, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>bool</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">success</span> <span class="o">=</span> <span class="n">load_config</span><span class="p">(</span><span class="s2">&quot;config/my_project_config.json&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Configuration loaded successfully!&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1"># Check if it&#39;s complete</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">is_config_valid</span><span class="p">():</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;And it&#39;s valid!&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Failed to load configuration&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>This overwrites any previously set parameters with values from the file</p></li>
+<li><p>Parameters not specified in the file retain their current values</p></li>
+<li><p>The function silently catches and handles any exceptions during loading.</p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="generation-functions">
+<h2>Generation Functions<a class="headerlink" href="#generation-functions" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.start_generation">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.</span></span><span class="sig-name descname"><span class="pre">start_generation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wizardsdata/generator.html#start_generation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.start_generation" title="Link to this definition"></a></dt>
+<dd><p>Start generating conversations between clients and advisors based on the current configuration.</p>
+<p>This function orchestrates the entire conversation generation process. It:
+1. Validates the current configuration
+2. Initializes the API clients
+3. Loads conversation profiles from the configured file
+4. Renders prompts for each profile
+5. Generates conversations for each profile using the appropriate models
+6. Saves all conversations to the configured output file</p>
+<p>The function relies on the global configuration instance having all necessary
+parameters properly set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span></p>
+</dd>
+</dl>
+<section id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>bool</dt><dd><p>True if the generation process completed successfully, False otherwise.
+Returns False in the following cases:
+- Invalid configuration (missing parameters)
+- No profiles found in the profile file
+- Failure to render prompts
+- Error during API calls
+- Failure to save conversations</p>
+</dd>
+</dl>
+</section>
+<section id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h3>
+<p>Before calling this function, ensure all required configuration parameters are set:
+- API_KEY: Required for API access
+- template_client_prompt: Path to client prompt template
+- template_advisor_prompt: Path to advisor prompt template
+- file_profiles: Path to JSON file containing conversation profiles
+- file_output: Path where generated conversations will be saved
+- model_client: Model configuration for client responses
+- model_advisor: Model configuration for advisor responses</p>
+<p>The function will log progress and error information to standard output.</p>
+</section>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">wizardsdata.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_config</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">wizardsdata.generator</span><span class="w"> </span><span class="kn">import</span> <span class="n">start_generation</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Set up configuration</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">errors</span> <span class="o">=</span> <span class="n">set_config</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">API_KEY</span><span class="o">=</span><span class="s2">&quot;your-api-key&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">template_client_prompt</span><span class="o">=</span><span class="s2">&quot;templates/client.txt&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">template_advisor_prompt</span><span class="o">=</span><span class="s2">&quot;templates/advisor.txt&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">file_profiles</span><span class="o">=</span><span class="s2">&quot;data/profiles.json&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">file_output</span><span class="o">=</span><span class="s2">&quot;output/conversations.json&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">model_client</span><span class="o">=</span><span class="s2">&quot;gpt-4&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">model_advisor</span><span class="o">=</span><span class="s2">&quot;gpt-4&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="ow">not</span> <span class="n">errors</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="c1"># Start generation</span>
+<span class="gp">... </span>    <span class="n">success</span> <span class="o">=</span> <span class="n">start_generation</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Generation completed successfully!&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Generation failed.&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid configuration: </span><span class="si">{</span><span class="n">errors</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+</section>
+<section id="alternative-module-view">
+<h2>Alternative Module View<a class="headerlink" href="#alternative-module-view" title="Link to this heading"></a></h2>
+<p>If you prefer to see the API organized by module, you can use the following:</p>
+<p id="module-wizardsdata">WizardSData - A library for generating conversation datasets using language models.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.</span></span><span class="sig-name descname"><span class="pre">set_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wizardsdata/config.html#set_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd><p>Set global configuration parameters and validate the resulting configuration.</p>
+<p>This function provides a convenient interface to set parameters in the global
+Config instance. After setting the provided parameters, it automatically
+validates the configuration and returns any validation errors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>**kwargs</strong> – Key-value pairs for configuration parameters.</p></li>
+<li><p><strong>Parameters</strong> (<em>Configuration</em>)</p></li>
+<li><p><strong>API_KEY</strong> (<em>str</em>) – API key for accessing external language model services.</p></li>
+<li><p><strong>template_client_prompt</strong> (<em>str</em>) – File path to the template used for client prompts.</p></li>
+<li><p><strong>template_advisor_prompt</strong> (<em>str</em>) – File path to the template used for advisor prompts.</p></li>
+<li><p><strong>file_profiles</strong> (<em>str</em>) – File path to the JSON containing conversation profiles.</p></li>
+<li><p><strong>file_output</strong> (<em>str</em>) – File path where generated conversations will be saved.</p></li>
+<li><p><strong>model_client</strong> (<em>dict</em>) – Model configuration for client responses.</p></li>
+<li><p><strong>model_advisor</strong> (<em>dict</em>) – Model configuration for advisor responses.</p></li>
+<li><p><strong>defaults</strong> (<em>Optional parameters with</em>)</p></li>
+<li><p><strong>temperature_client</strong> (<em>float</em>) – Temperature for client model sampling (default: 0.7).</p></li>
+<li><p><strong>top_p_client</strong> (<em>float</em>) – Top-p value for client model sampling (default: 0.95).</p></li>
+<li><p><strong>frequency_penalty_client</strong> (<em>float</em>) – Frequency penalty for client model (default: 0.3).</p></li>
+<li><p><strong>max_tokens_client</strong> (<em>int</em>) – Maximum tokens for client responses (default: 175).</p></li>
+<li><p><strong>max_recommended_questions</strong> (<em>int</em>) – Maximum recommended questions to generate (default: 10).</p></li>
+<li><p><strong>temperature_advisor</strong> (<em>float</em>) – Temperature for advisor model sampling (default: 0.5).</p></li>
+<li><p><strong>top_p_advisor</strong> (<em>float</em>) – Top-p value for advisor model sampling (default: 0.9).</p></li>
+<li><p><strong>frequency_penalty_advisor</strong> (<em>float</em>) – Frequency penalty for advisor model (default: 0.1).</p></li>
+<li><p><strong>max_tokens_advisor</strong> (<em>int</em>) – Maximum tokens for advisor responses (default: 325).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of validation errors. Empty list if configuration is valid.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>List</em>[<em>str</em>]</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Setting only partial mandatory parameters will return validation errors</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">errors</span> <span class="o">=</span> <span class="n">set_config</span><span class="p">(</span><span class="n">API_KEY</span><span class="o">=</span><span class="s2">&quot;my-api-key&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                    <span class="n">template_client_prompt</span><span class="o">=</span><span class="s2">&quot;templates/client.txt&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Configuration is incomplete: </span><span class="si">{</span><span class="n">errors</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1"># Output: Configuration is incomplete: [&#39;template_advisor_prompt&#39;, &#39;file_profiles&#39;, &#39;file_output&#39;, &#39;model_client&#39;, &#39;model_advisor&#39;]</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Setting all mandatory parameters for a valid configuration</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">errors</span> <span class="o">=</span> <span class="n">set_config</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">API_KEY</span><span class="o">=</span><span class="s2">&quot;my-api-key&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">template_client_prompt</span><span class="o">=</span><span class="s2">&quot;templates/client.txt&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">template_advisor_prompt</span><span class="o">=</span><span class="s2">&quot;templates/advisor.txt&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">file_profiles</span><span class="o">=</span><span class="s2">&quot;data/profiles.json&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">file_output</span><span class="o">=</span><span class="s2">&quot;output/conversations.json&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">model_client</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;gpt-4&quot;</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="n">model_advisor</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;gpt-4&quot;</span><span class="p">}</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="ow">not</span> <span class="n">errors</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Configuration is valid!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>This updates only the parameters specified in kwargs; other parameters</p></li>
+</ul>
+<p>retain their current values.
+- See the Config class for a complete list of valid parameters.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.</span></span><span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wizardsdata/config.html#get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
+<dd><p>Get the current global configuration.</p>
+<p>This function retrieves all current configuration parameters from the global
+Config instance, including both explicitly set values and default values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary with all configuration parameters.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Dict</em>[<em>str</em>, <em>Any</em>]</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">full_config</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Client temperature: </span><span class="si">{</span><span class="n">full_config</span><span class="p">[</span><span class="s1">&#39;temperature_client&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get specific parameters directly from the config instance</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">wizardsdata.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;API Key: </span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;API_KEY&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.</span></span><span class="sig-name descname"><span class="pre">is_config_valid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wizardsdata/config.html#is_config_valid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id2" title="Link to this definition"></a></dt>
+<dd><p>Check if the current global configuration is valid.</p>
+<p>This function checks if all mandatory parameters are set and if specified
+file paths exist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the configuration is valid, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>bool</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="ow">not</span> <span class="n">is_config_valid</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please set all required configuration parameters&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1"># Show what&#39;s missing</span>
+<span class="gp">... </span>    <span class="kn">from</span><span class="w"> </span><span class="nn">wizardsdata.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Missing: </span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>Mandatory parameters are defined in Config.MANDATORY_PARAMS</p></li>
+<li><p>The function also checks if specified file paths exist</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.</span></span><span class="sig-name descname"><span class="pre">save_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wizardsdata/config.html#save_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id3" title="Link to this definition"></a></dt>
+<dd><p>Save the current global configuration to a JSON file.</p>
+<p>This function exports all configuration parameters (including defaults)
+to a specified JSON file for later reuse.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Path where the configuration file will be saved.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the save operation was successful, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>bool</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">success</span> <span class="o">=</span> <span class="n">save_config</span><span class="p">(</span><span class="s2">&quot;config/my_project_config.json&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Configuration saved successfully!&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Failed to save configuration&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The saved file uses JSON format with 4-space indentation</p></li>
+<li><p>Both explicitly set and default values are saved</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.</span></span><span class="sig-name descname"><span class="pre">load_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wizardsdata/config.html#load_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id4" title="Link to this definition"></a></dt>
+<dd><p>Load configuration from a JSON file into the global config instance.</p>
+<p>This function reads a previously saved configuration file and updates
+the global Config instance with those values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Path to the configuration JSON file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the load operation was successful, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>bool</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">success</span> <span class="o">=</span> <span class="n">load_config</span><span class="p">(</span><span class="s2">&quot;config/my_project_config.json&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Configuration loaded successfully!&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1"># Check if it&#39;s complete</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">is_config_valid</span><span class="p">():</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;And it&#39;s valid!&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Failed to load configuration&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>This overwrites any previously set parameters with values from the file</p></li>
+<li><p>Parameters not specified in the file retain their current values</p></li>
+<li><p>The function silently catches and handles any exceptions during loading.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="id5">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.</span></span><span class="sig-name descname"><span class="pre">start_generation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wizardsdata/generator.html#start_generation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id5" title="Link to this definition"></a></dt>
+<dd><p>Start generating conversations between clients and advisors based on the current configuration.</p>
+<p>This function orchestrates the entire conversation generation process. It:
+1. Validates the current configuration
+2. Initializes the API clients
+3. Loads conversation profiles from the configured file
+4. Renders prompts for each profile
+5. Generates conversations for each profile using the appropriate models
+6. Saves all conversations to the configured output file</p>
+<p>The function relies on the global configuration instance having all necessary
+parameters properly set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span></p>
+</dd>
+</dl>
+<section id="id6">
+<h3>Returns<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>bool</dt><dd><p>True if the generation process completed successfully, False otherwise.
+Returns False in the following cases:
+- Invalid configuration (missing parameters)
+- No profiles found in the profile file
+- Failure to render prompts
+- Error during API calls
+- Failure to save conversations</p>
+</dd>
+</dl>
+</section>
+<section id="id7">
+<h3>Notes<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<p>Before calling this function, ensure all required configuration parameters are set:
+- API_KEY: Required for API access
+- template_client_prompt: Path to client prompt template
+- template_advisor_prompt: Path to advisor prompt template
+- file_profiles: Path to JSON file containing conversation profiles
+- file_output: Path where generated conversations will be saved
+- model_client: Model configuration for client responses
+- model_advisor: Model configuration for advisor responses</p>
+<p>The function will log progress and error information to standard output.</p>
+</section>
+<section id="id8">
+<h3>Examples<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">wizardsdata.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_config</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">wizardsdata.generator</span><span class="w"> </span><span class="kn">import</span> <span class="n">start_generation</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Set up configuration</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">errors</span> <span class="o">=</span> <span class="n">set_config</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">API_KEY</span><span class="o">=</span><span class="s2">&quot;your-api-key&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">template_client_prompt</span><span class="o">=</span><span class="s2">&quot;templates/client.txt&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">template_advisor_prompt</span><span class="o">=</span><span class="s2">&quot;templates/advisor.txt&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">file_profiles</span><span class="o">=</span><span class="s2">&quot;data/profiles.json&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">file_output</span><span class="o">=</span><span class="s2">&quot;output/conversations.json&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">model_client</span><span class="o">=</span><span class="s2">&quot;gpt-4&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">model_advisor</span><span class="o">=</span><span class="s2">&quot;gpt-4&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="ow">not</span> <span class="n">errors</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="c1"># Start generation</span>
+<span class="gp">... </span>    <span class="n">success</span> <span class="o">=</span> <span class="n">start_generation</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Generation completed successfully!&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Generation failed.&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid configuration: </span><span class="si">{</span><span class="n">errors</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="usage.html" class="btn btn-neutral float-left" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cli.html" class="btn btn-neutral float-right" title="Command Line Interface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Your Name.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
