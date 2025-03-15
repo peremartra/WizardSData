@@ -2,7 +2,7 @@ Usage
 =====
 
 Basic Usage
-----------
+-----------
 
 .. code-block:: python
 
@@ -23,7 +23,7 @@ Basic Usage
     wsd.start_generation()
 
 Configuration Parameters
------------------------
+------------------------
 
 Mandatory Parameters:
 
@@ -31,7 +31,7 @@ Mandatory Parameters:
 - ``template_client_prompt``: Path to the client template file
 - ``template_advisor_prompt``: Path to the advisor template file
 - ``file_profiles``: Path to the profiles JSON file
-- ``file_output``: Path to save the output JSON file
+- ``file_output``: Path to save the output JSON file containing the generated conversations
 - ``model_client``: Model to use for the client
 - ``model_advisor``: Model to use for the advisor
 
@@ -51,7 +51,7 @@ Optional Parameters:
   - ``max_tokens_advisor``: 325
 
 Template Format
---------------
+---------------
 
 WizardSData uses Jinja2 templates for generating prompts. Here's an example of a client template:
 
@@ -70,7 +70,7 @@ WizardSData uses Jinja2 templates for generating prompts. Here's an example of a
     You can ask up to {{ max_questions }} questions.
 
 Profile Format
--------------
+--------------
 
 Profiles should be provided in JSON format:
 
@@ -96,7 +96,7 @@ Profiles should be provided in JSON format:
     }
 
 Advanced Usage
--------------
+--------------
 
 Saving and Loading Configuration:
 
