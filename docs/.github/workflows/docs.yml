@@ -5,45 +5,57 @@ on:
     branches: [ main ]
     paths:
       - 'wizardsdata/**'
-      - 'docs/**'
+      - 'docs/source/**'
       - '.github/workflows/docs.yml'
-  # Allow manual trigger
-  workflow_dispatch:
+  workflow_dispatch:  # Allow manual trigger
 
 jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.9'
-    
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -e .
         pip install sphinx sphinx-rtd-theme sphinx-autodoc-typehints
-    
+
     - name: Build documentation
       run: |
         cd docs
         make html SPHINXOPTS="-W"
-    
-    - name: Prepare docs directory for GitHub Pages
+
+    - name: Copy documentation to docs folder
       run: |
-        # Clean docs directory (preserving source and build)
-        find docs -mindepth 1 -maxdepth 1 -not -name "source" -not -name "build" -not -name "Makefile" -not -name "make.bat" -exec rm -rf {} \;
+        # Create backup of source files
+        mkdir -p /tmp/sphinx_source
+        cp -r docs/source /tmp/sphinx_source/
+        cp docs/Makefile /tmp/sphinx_source/
+        cp docs/make.bat /tmp/sphinx_source/ 2>/dev/null || true
         
-        # Copy built HTML files directly to docs directory
+        # Clear docs folder
+        rm -rf docs/*
+        
+        # Copy built documentation to docs folder
         cp -r docs/build/html/* docs/
         
-        # Create .nojekyll file to prevent Jekyll processing
+        # Add .nojekyll file to prevent Jekyll processing
         touch docs/.nojekyll
-    
-    - name: Commit changes
+        
+        # Restore source directory and build files
+        mkdir -p docs/source
+        cp -r /tmp/sphinx_source/source/* docs/source/
+        cp /tmp/sphinx_source/Makefile docs/
+        [ -f /tmp/sphinx_source/make.bat ] && cp /tmp/sphinx_source/make.bat docs/
+
+    - name: Commit documentation changes
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"

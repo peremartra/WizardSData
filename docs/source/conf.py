@@ -57,3 +57,35 @@ napoleon_include_special_with_doc = False
 # Improve type hints rendering
 autodoc_typehints = 'description'  # Show type hints in the description, not signature
 autodoc_typehints_format = 'short' # Use short names for types
+
+# If you're using the Read the Docs theme, you can use this for better GitHub Pages compatibility
+html_theme_options = {
+    'canonical_url': '',
+    'logo_only': False,
+    'display_version': True,
+    'prev_next_buttons_location': 'bottom',
+    'style_external_links': False,
+    'style_nav_header_background': '#2980B9',
+    # Toc options
+    'collapse_navigation': True,
+    'sticky_navigation': True,
+    'navigation_depth': 4,
+    'includehidden': True,
+    'titles_only': False
+}
+
+# Make sure static paths are correctly included
+html_static_path = ['_static']
+
+# Use a stable path for _static files
+html_context = {
+    'css_files': [
+        '_static/css/theme.css',
+    ],
+}
+
+# Explicitly set URLs to be relative
+html_use_index = True
+html_use_modindex = True
+html_use_smartypants = True
+html_baseurl = '.'  # Important for GitHub Pages
