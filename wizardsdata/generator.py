@@ -193,10 +193,68 @@ def save_conversation(conversations: List[Dict[str, Any]], file_path: str) -> bo
 
 def start_generation() -> bool:
     """
-    Start generating conversations based on the current configuration.
+    Start generating conversations between clients and advisors based on the current configuration.
     
-    Returns:
-        True if successful, False otherwise.
+    This function orchestrates the entire conversation generation process. It:
+    1. Validates the current configuration
+    2. Initializes the API clients
+    3. Loads conversation profiles from the configured file
+    4. Renders prompts for each profile
+    5. Generates conversations for each profile using the appropriate models
+    6. Saves all conversations to the configured output file
+    
+    The function relies on the global configuration instance having all necessary
+    parameters properly set.
+    
+    Returns
+    -------
+    bool
+        True if the generation process completed successfully, False otherwise.
+        Returns False in the following cases:
+        - Invalid configuration (missing parameters)
+        - No profiles found in the profile file
+        - Failure to render prompts
+        - Error during API calls
+        - Failure to save conversations
+    
+    Notes
+    -----
+    Before calling this function, ensure all required configuration parameters are set:
+    - API_KEY: Required for API access
+    - template_client_prompt: Path to client prompt template
+    - template_advisor_prompt: Path to advisor prompt template
+    - file_profiles: Path to JSON file containing conversation profiles
+    - file_output: Path where generated conversations will be saved
+    - model_client: Model configuration for client responses
+    - model_advisor: Model configuration for advisor responses
+    
+    The function will log progress and error information to standard output.
+    
+    Examples
+    --------
+    >>> from wizardsdata.config import set_config
+    >>> from wizardsdata.generator import start_generation
+    >>> 
+    >>> # Set up configuration
+    >>> errors = set_config(
+    ...     API_KEY="your-api-key",
+    ...     template_client_prompt="templates/client.txt",
+    ...     template_advisor_prompt="templates/advisor.txt",
+    ...     file_profiles="data/profiles.json",
+    ...     file_output="output/conversations.json",
+    ...     model_client="gpt-4",
+    ...     model_advisor="gpt-4"
+    ... )
+    >>> 
+    >>> if not errors:
+    ...     # Start generation
+    ...     success = start_generation()
+    ...     if success:
+    ...         print("Generation completed successfully!")
+    ...     else:
+    ...         print("Generation failed.")
+    ... else:
+    ...     print(f"Invalid configuration: {errors}")
     """
     # Validate configuration
     if not config.is_valid():
