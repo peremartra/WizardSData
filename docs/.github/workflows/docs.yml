@@ -1,4 +1,5 @@
 name: Documentation
+
 on:
   push:
     branches: [ main ]
@@ -6,12 +7,8 @@ on:
       - 'wizardsdata/**'
       - 'docs/**'
       - '.github/workflows/docs.yml'
-  pull_request:
-    branches: [ main ]
-    paths:
-      - 'wizardsdata/**'
-      - 'docs/**'
-      - '.github/workflows/docs.yml'
+  # Allow manual trigger
+  workflow_dispatch:
 
 jobs:
   docs:
@@ -35,29 +32,21 @@ jobs:
         cd docs
         make html SPHINXOPTS="-W"
     
-    - name: Archive documentation
-      uses: actions/upload-artifact@v3
-      with:
-        name: documentation
-        path: docs/build/html
-  deploy:
-    needs: docs
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    permissions:
-      contents: write
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+    - name: Prepare docs directory for GitHub Pages
+      run: |
+        # Clean docs directory (preserving source and build)
+        find docs -mindepth 1 -maxdepth 1 -not -name "source" -not -name "build" -not -name "Makefile" -not -name "make.bat" -exec rm -rf {} \;
         
-      - name: Download documentation artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: documentation
-          path: docs/build/html
-          
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: docs/build/html
-          branch: gh-pages
+        # Copy built HTML files directly to docs directory
+        cp -r docs/build/html/* docs/
+        
+        # Create .nojekyll file to prevent Jekyll processing
+        touch docs/.nojekyll
+    
+    - name: Commit changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add docs
+        git commit -m "Update documentation" || echo "No changes to commit"
+        git push
