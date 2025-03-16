@@ -3,6 +3,14 @@
 
 ![Generate Syntetic Conversations](/images/wizardsdata_banner.png)
 
+<div align="center">
+    <h3>
+        <a href="https://peremartra.github.io/WizardSData/build/html/index.html" target="_blank">DOCUMENTATION</a> | 
+        <a href="https://github.com/peremartra/WizardSData/tree/main/Usage_Examples" target="_blank">EXAMPLES</a>
+    </h3>
+</div>
+
+
 A Python library for generating conversation datasets using language models. WizardSData automates the creation of simulated conversations between a client and an advisor, using templates and model APIs.
 
 This library is perfect for generating dialogues in highly regulated sectors like Finance or Healthcare, where the use of customer data is strictly protected.
