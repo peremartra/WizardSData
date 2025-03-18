@@ -35,7 +35,7 @@ jobs:
     - name: Build documentation
       run: |
         cd docs
-        make html SPHINXOPTS="-W"
+        make html SPHINXOPTS="-v -W"
 
     - name: Copy documentation to docs folder
       run: |
