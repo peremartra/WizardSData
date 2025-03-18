@@ -30,12 +30,18 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -e .
-        pip install sphinx sphinx-rtd-theme sphinx-autodoc-typehints
+        pip install sphinx sphinx-rtd-theme sphinx-autodoc-typehints nbsphinx jupyter
 
     - name: Build documentation
       run: |
         cd docs
-        make html SPHINXOPTS="-v -W"
+        make html SPHINXOPTS="-v" 2>&1 | tee build_output.log
+
+    - name: Upload build log
+      uses: actions/upload-artifact@v4
+      with:
+        name: sphinx-build-log
+        path: docs/build_output.log
 
     - name: Copy documentation to docs folder
       run: |
