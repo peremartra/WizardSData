@@ -43,6 +43,7 @@ Contents
    
    installation
    usage
+   examples
    api
    cli
 
