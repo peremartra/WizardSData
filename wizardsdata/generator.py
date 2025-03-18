@@ -190,7 +190,7 @@ def initiate_conversation(client_prompt: str, advisor_prompt: str, financial_goa
 
 def start_generation() -> bool:
     """
-    Start generating conversations between clients and advisors based on the current configuration.
+    Start generating conversations between roles based on the current configuration.
     
     This function orchestrates the entire conversation generation process. It:
     1. Validates the current configuration
