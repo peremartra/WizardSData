@@ -1,17 +1,8 @@
 Examples
 ========
 
-This is a test page for examples.
-
 .. toctree::
    :maxdepth: 2
    
+   ../../Usage_Examples/example_financial_dataset/example_retail_banking.ipynb
    
-JSON Output Example
-------------------
-
-.. code-block:: json
-
-   {
-     "example": "This is a placeholder JSON example"
-   }
