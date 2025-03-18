@@ -4,8 +4,13 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'wizardsdata/**'
+      - 'wizardsdata/generator.py'
+      - 'wizardsdata/config.py'
       - 'docs/source/**'
+      - 'Usage_Examples/**'       # Example notebooks folder
+      - '**/*.ipynb'              # Any notebook files
+      - '**/*.rst'                # Any RST files
+      - '**/*.md'                 # Any Markdown files
       - '.github/workflows/docs.yml'
   workflow_dispatch:  # Allow manual trigger
 

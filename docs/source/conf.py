@@ -7,8 +7,8 @@ sys.path.insert(0, os.path.abspath('../..'))
 
 # -- Project information -----------------------------------------------------
 project = 'WizardSData'
-copyright = '2025, Your Name'
-author = 'Your Name'
+copyright = '2025, Pere Martra'
+author = 'Pere Martra'
 release = '0.1.0'
 
 # -- General configuration ---------------------------------------------------
@@ -17,8 +17,11 @@ extensions = [
     'sphinx.ext.viewcode',         # Adds links to view source code
     'sphinx.ext.napoleon',         # Supports Google and NumPy style docstrings
     'sphinx_autodoc_typehints',    # Adds support for PEP 484 type hints
+    'nbsphinx',
+    'sphinx.ext.intersphinx',  # For cross-referencing
 ]
 
+nbsphinx_execute = 'never'
 templates_path = ['_templates']
 exclude_patterns = []
 

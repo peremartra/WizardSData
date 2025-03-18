@@ -68,19 +68,11 @@ def get_model_response(api_client, model: str, messages: List[Dict[str, str]],
     return response.choices[0].message.content.strip()
 
 
-<<<<<<< HEAD
 def initiate_conversation(client_prompt: str, advisor_prompt: str, financial_goal: str,
                           client_api, advisor_api, max_questions: int) -> List[Dict[str, Any]]:
     """
     Initiate a continuous conversation between client and advisor models.
 
-=======
-def initiate_conversation(client_prompt: str, advisor_prompt: str, financial_goal: str, 
-                          client_api, advisor_api, max_questions: int) -> List[Dict[str, Any]]:
-    """
-    Initiate a continuous conversation between client and advisor models.
-    
->>>>>>> ee0323e21e5d05ca5c2787a28d907693de1640e6
     Args:
         client_prompt: System prompt for the client model.
         advisor_prompt: System prompt for the advisor model.
@@ -88,11 +80,7 @@ def initiate_conversation(client_prompt: str, advisor_prompt: str, financial_goa
         client_api: OpenAI client for the client model.
         advisor_api: OpenAI client for the advisor model.
         max_questions: Maximum number of interactions.
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> ee0323e21e5d05ca5c2787a28d907693de1640e6
     Returns:
         List of dictionaries representing the conversation.
     """
@@ -102,21 +90,13 @@ def initiate_conversation(client_prompt: str, advisor_prompt: str, financial_goa
     top_p_client = config.get('top_p_client')
     frequency_penalty_client = config.get('frequency_penalty_client')
     max_tokens_client = config.get('max_tokens_client')
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> ee0323e21e5d05ca5c2787a28d907693de1640e6
     model_advisor = config.get('model_advisor')
     temperature_advisor = config.get('temperature_advisor')
     top_p_advisor = config.get('top_p_advisor')
     frequency_penalty_advisor = config.get('frequency_penalty_advisor')
     max_tokens_advisor = config.get('max_tokens_advisor')
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> ee0323e21e5d05ca5c2787a28d907693de1640e6
     # Generate unique conversation ID
     conversation_id = str(uuid.uuid4())
     conversation_dataset = []
@@ -129,33 +109,21 @@ def initiate_conversation(client_prompt: str, advisor_prompt: str, financial_goa
     for _ in range(round(max_questions * 2.1)):
         # Client response
         client_response = get_model_response(
-<<<<<<< HEAD
             client_api,
             model=model_client,
             messages=client_conversation,
             temperature=temperature_client,
-=======
-            client_api, 
-            model=model_client, 
-            messages=client_conversation, 
-            temperature=temperature_client, 
->>>>>>> ee0323e21e5d05ca5c2787a28d907693de1640e6
             top_p=top_p_client,
             frequency_penalty=frequency_penalty_client,
             max_tokens=max_tokens_client
         )
         print("client: " + client_response)
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> ee0323e21e5d05ca5c2787a28d907693de1640e6
         # Add the client response to the dataset BEFORE checking for [END]
         conversation_dataset.append({
             "id_conversation": conversation_id,
             "topic": financial_goal,
             "sequence": sequence,
-<<<<<<< HEAD
             "rol1": client_response.replace("[END]", "").strip(),
             "rol2": ""  # Placeholder for advisor response
         })
@@ -164,38 +132,21 @@ def initiate_conversation(client_prompt: str, advisor_prompt: str, financial_goa
         if "[END]" in client_response:
             break
 
-=======
-            "input": client_conversation[-1]['content'] if len(client_conversation) > 1 and client_conversation[-1]['role'] == 'user' else "Start conversation",
-            "output": client_response.replace("[END]", "").strip()
-        })
-        
-        # Now check for [END] after adding to dataset
-        if "[END]" in client_response:
-            break
-            
->>>>>>> ee0323e21e5d05ca5c2787a28d907693de1640e6
         client_conversation.append({"role": "assistant", "content": client_response})
         advisor_conversation.append({"role": "user", "content": client_response})
         sequence += 1
 
         # Advisor response
         advisor_response = get_model_response(
-<<<<<<< HEAD
             advisor_api,
             model=model_advisor,
             messages=advisor_conversation,
-=======
-            advisor_api, 
-            model=model_advisor, 
-            messages=advisor_conversation, 
->>>>>>> ee0323e21e5d05ca5c2787a28d907693de1640e6
             temperature=temperature_advisor,
             top_p=top_p_advisor,
             frequency_penalty=frequency_penalty_advisor,
             max_tokens=max_tokens_advisor
         )
         print("advisor: " + advisor_response)
-<<<<<<< HEAD
 
         # Update the last entry in the dataset with the advisor response
         if conversation_dataset:
@@ -209,51 +160,7 @@ def initiate_conversation(client_prompt: str, advisor_prompt: str, financial_goa
         client_conversation.append({"role": "user", "content": advisor_response})
         sequence += 1
 
-=======
-        
-        # Add the advisor response to the dataset BEFORE checking for [END]
-        conversation_dataset.append({
-            "id_conversation": conversation_id,
-            "topic": financial_goal,
-            "sequence": sequence,
-            "input": advisor_conversation[-1]['content'],
-            "output": advisor_response.replace("[END]", "").strip()
-        })
-        
-        # Now check for [END] after adding to dataset
-        if "[END]" in advisor_response:
-            break
-            
-        advisor_conversation.append({"role": "assistant", "content": advisor_response})
-        client_conversation.append({"role": "user", "content": advisor_response})
-        sequence += 1
-    
->>>>>>> ee0323e21e5d05ca5c2787a28d907693de1640e6
     return conversation_dataset
-
-
-def save_conversation(conversations: List[Dict[str, Any]], file_path: str) -> bool:
-    """
-    Save the conversation dataset to a JSON file.
-    
-    Args:
-        conversations: List of conversation dictionaries.
-        file_path: Path to save the conversations.
-        
-    Returns:
-        True if successful, False otherwise.
-    """
-    try:
-        # Create directory if it doesn't exist
-        os.makedirs(os.path.dirname(file_path), exist_ok=True)
-        
-        with open(file_path, 'w') as file:
-            json.dump(conversations, file, indent=4)
-        return True
-    except Exception as e:
-        print(f"Error saving conversations: {str(e)}")
-        return False
-
 
 def start_generation() -> bool:
     """
