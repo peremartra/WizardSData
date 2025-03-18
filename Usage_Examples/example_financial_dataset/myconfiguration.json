@@ -1,0 +1,18 @@
+{
+    "temperature_client": 0.8,
+    "top_p_client": 0.95,
+    "frequency_penalty_client": 0.3,
+    "max_tokens_client": 175,
+    "max_recommended_questions": 15,
+    "temperature_advisor": 0.1,
+    "top_p_advisor": 0.9,
+    "frequency_penalty_advisor": 0.1,
+    "max_tokens_advisor": 325,
+    "API_KEY": "YOUR-API-KEY",
+    "template_client_prompt": "../../templates/financial01/prompts/financial_client_01.j2",
+    "template_advisor_prompt": "../../templates/financial01/prompts/financial_advisor_01.j2",
+    "file_output": "./test_financial_dataset01_5.json",
+    "model_client": "gpt-4o-mini",
+    "model_advisor": "gpt-4o-mini",
+    "file_profiles": "../../templates/financial01/profiles/financial_sample01_5.json"
+}

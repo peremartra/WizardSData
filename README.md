@@ -11,7 +11,11 @@
 </div>
 
 
+<<<<<<< HEAD
+A Python library for generating conversation datasets using language models. WizardSData automates the creation of simulated conversations between a client and an advisor, using templates and model APIs.
+=======
 A Python library for generating conversation datasets using Large Language Models. WizardSData automates the creation of simulated conversations between a client and an advisor, using templates and model APIs.
+>>>>>>> ee0323e21e5d05ca5c2787a28d907693de1640e6
 
 This library is perfect for generating dialogues in highly regulated sectors like Finance or Healthcare, where the use of customer data is strictly protected.
 

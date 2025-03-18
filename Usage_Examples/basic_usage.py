@@ -15,7 +15,11 @@ def main():
     """Example of using WizardSData."""
     # Configure the library
     missing = wsd.set_config(
+<<<<<<< HEAD
+        API_KEY="API-KEY",  # Replace with your actual API key
+=======
         API_KEY="YOUR-API-KEY",  # Replace with your actual API key
+>>>>>>> ee0323e21e5d05ca5c2787a28d907693de1640e6
         template_client_prompt="templates/financial01/prompts/financial_client_01.j2",
         template_advisor_prompt="templates/financial01/prompts/financial_advisor_01.j2",
         file_profiles="templates/financial01/profiles/financial_sample01_1.json",
