@@ -68,6 +68,31 @@ def get_model_response(api_client, model: str, messages: List[Dict[str, str]],
     return response.choices[0].message.content.strip()
 
 
+
+
+
+def save_conversation(conversations: List[Dict[str, Any]], file_path: str) -> bool:
+    """
+    Save the conversation dataset to a JSON file.
+    
+    Args:
+        conversations: List of conversation dictionaries.
+        file_path: Path to save the conversations.
+        
+    Returns:
+        True if successful, False otherwise.
+    """
+    try:
+        # Create directory if it doesn't exist
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        
+        with open(file_path, 'w') as file:
+            json.dump(conversations, file, indent=4)
+        return True
+    except Exception as e:
+        print(f"Error saving conversations: {str(e)}")
+        return False
+
 def initiate_conversation(client_prompt: str, advisor_prompt: str, financial_goal: str,
                           client_api, advisor_api, max_questions: int) -> List[Dict[str, Any]]:
     """
@@ -161,6 +186,7 @@ def initiate_conversation(client_prompt: str, advisor_prompt: str, financial_goa
         sequence += 1
 
     return conversation_dataset
+
 
 def start_generation() -> bool:
     """
