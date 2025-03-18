@@ -20,6 +20,14 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      
+    - name: Debug directory structure  # Add it here, after checkout
+      run: |
+        find . -name "*.ipynb" | sort
+        echo "Current directory: $(pwd)"
+        ls -la docs/source/
+        cat docs/source/examples.rst
+        ls -la Usage_Examples/ || echo "Usage_Examples directory not found"
 
     - name: Set up Python
       uses: actions/setup-python@v4
