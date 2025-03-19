@@ -3,7 +3,7 @@ Name: wizardsdata
 Version: 0.1.0
 Summary: A library for generating conversation datasets using language models
 Home-page: https://github.com/peremartra/WizardSData
-Author: Your Name
+Author: Pere Martra
 Author-email: your.email@example.com
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: Apache-2.0 license

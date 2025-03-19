@@ -11,8 +11,8 @@ sys.path.insert(0, os.path.abspath('../..'))
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'WizardSData'
-copyright = '2025, Your Name'
-author = 'Your Name'
+copyright = '2025, Pere Martra'
+author = 'Pere Martra'
 release = '0.1.0'
 
 # -- General configuration ---------------------------------------------------
