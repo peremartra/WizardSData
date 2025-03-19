@@ -1,0 +1,1039 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Reference &mdash; WizardSData 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="Usage Guide" href="usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            WizardSData
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-functions">Configuration Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#set-config">set_config</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#wizardsdata.set_config"><code class="docutils literal notranslate"><span class="pre">set_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#get-config">get_config</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#wizardsdata.get_config"><code class="docutils literal notranslate"><span class="pre">get_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#is-config-valid">is_config_valid</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#wizardsdata.is_config_valid"><code class="docutils literal notranslate"><span class="pre">is_config_valid()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#save-config">save_config</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#wizardsdata.save_config"><code class="docutils literal notranslate"><span class="pre">save_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#load-config">load_config</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#wizardsdata.load_config"><code class="docutils literal notranslate"><span class="pre">load_config()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#generation-functions">Generation Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#start-generation">start_generation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#wizardsdata.start_generation"><code class="docutils literal notranslate"><span class="pre">start_generation()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-details">Module Details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-wizardsdata.config">Config Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#wizardsdata.config.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wizardsdata.config.set_config"><code class="docutils literal notranslate"><span class="pre">set_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wizardsdata.config.get_config"><code class="docutils literal notranslate"><span class="pre">get_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wizardsdata.config.is_config_valid"><code class="docutils literal notranslate"><span class="pre">is_config_valid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wizardsdata.config.save_config"><code class="docutils literal notranslate"><span class="pre">save_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wizardsdata.config.load_config"><code class="docutils literal notranslate"><span class="pre">load_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-wizardsdata.generator">Generator Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#wizardsdata.generator.initialize_apis"><code class="docutils literal notranslate"><span class="pre">initialize_apis()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wizardsdata.generator.get_model_response"><code class="docutils literal notranslate"><span class="pre">get_model_response()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wizardsdata.generator.save_conversation"><code class="docutils literal notranslate"><span class="pre">save_conversation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wizardsdata.generator.initiate_conversation"><code class="docutils literal notranslate"><span class="pre">initiate_conversation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wizardsdata.generator.start_generation"><code class="docutils literal notranslate"><span class="pre">start_generation()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-wizardsdata.templates">Templates Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#wizardsdata.templates.render_prompt_from_path"><code class="docutils literal notranslate"><span class="pre">render_prompt_from_path()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-wizardsdata.utils">Utilities Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#wizardsdata.utils.ensure_directory_exists"><code class="docutils literal notranslate"><span class="pre">ensure_directory_exists()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wizardsdata.utils.load_json"><code class="docutils literal notranslate"><span class="pre">load_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wizardsdata.utils.save_json"><code class="docutils literal notranslate"><span class="pre">save_json()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-wizardsdata.cli">CLI Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#wizardsdata.cli.parse_args"><code class="docutils literal notranslate"><span class="pre">parse_args()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wizardsdata.cli.clean_args"><code class="docutils literal notranslate"><span class="pre">clean_args()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wizardsdata.cli.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">WizardSData</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">API Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading"></a></h1>
+<p>This page provides detailed documentation for the public API of WizardSData.</p>
+<section id="configuration-functions">
+<h2>Configuration Functions<a class="headerlink" href="#configuration-functions" title="Link to this heading"></a></h2>
+<section id="set-config">
+<h3>set_config<a class="headerlink" href="#set-config" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.set_config">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.</span></span><span class="sig-name descname"><span class="pre">set_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/wizardsdata/config.html#set_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.set_config" title="Link to this definition"></a></dt>
+<dd><p>Set global configuration parameters and validate the resulting configuration.</p>
+<p>This function provides a convenient interface to set parameters in the global
+Config instance. After setting the provided parameters, it automatically
+validates the configuration and returns any validation errors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>**kwargs</strong> – Key-value pairs for configuration parameters.</p></li>
+<li><p><strong>Parameters</strong> (<em>Configuration</em>)</p></li>
+<li><p><strong>API_KEY</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – API key for accessing external language model services.</p></li>
+<li><p><strong>template_client_prompt</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – File path to the template used for client prompts.</p></li>
+<li><p><strong>template_advisor_prompt</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – File path to the template used for advisor prompts.</p></li>
+<li><p><strong>file_profiles</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – File path to the JSON containing conversation profiles.</p></li>
+<li><p><strong>file_output</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – File path where generated conversations will be saved.</p></li>
+<li><p><strong>model_client</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – Model configuration for client responses.</p></li>
+<li><p><strong>model_advisor</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – Model configuration for advisor responses.</p></li>
+<li><p><strong>defaults</strong> (<em>Optional parameters with</em>)</p></li>
+<li><p><strong>temperature_client</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Temperature for client model sampling (default: 0.7).</p></li>
+<li><p><strong>top_p_client</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Top-p value for client model sampling (default: 0.95).</p></li>
+<li><p><strong>frequency_penalty_client</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Frequency penalty for client model (default: 0.3).</p></li>
+<li><p><strong>max_tokens_client</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Maximum tokens for client responses (default: 175).</p></li>
+<li><p><strong>max_recommended_questions</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Maximum recommended questions to generate (default: 10).</p></li>
+<li><p><strong>temperature_advisor</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Temperature for advisor model sampling (default: 0.5).</p></li>
+<li><p><strong>top_p_advisor</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Top-p value for advisor model sampling (default: 0.9).</p></li>
+<li><p><strong>frequency_penalty_advisor</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Frequency penalty for advisor model (default: 0.1).</p></li>
+<li><p><strong>max_tokens_advisor</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Maximum tokens for advisor responses (default: 325).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of validation errors. Empty list if configuration is valid.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>]</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Setting only partial mandatory parameters will return validation errors</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">errors</span> <span class="o">=</span> <span class="n">set_config</span><span class="p">(</span><span class="n">API_KEY</span><span class="o">=</span><span class="s2">&quot;my-api-key&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                    <span class="n">template_client_prompt</span><span class="o">=</span><span class="s2">&quot;templates/client.txt&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Configuration is incomplete: </span><span class="si">{</span><span class="n">errors</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1"># Output: Configuration is incomplete: [&#39;template_advisor_prompt&#39;, &#39;file_profiles&#39;, &#39;file_output&#39;, &#39;model_client&#39;, &#39;model_advisor&#39;]</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Setting all mandatory parameters for a valid configuration</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">errors</span> <span class="o">=</span> <span class="n">set_config</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">API_KEY</span><span class="o">=</span><span class="s2">&quot;my-api-key&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">template_client_prompt</span><span class="o">=</span><span class="s2">&quot;templates/client.txt&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">template_advisor_prompt</span><span class="o">=</span><span class="s2">&quot;templates/advisor.txt&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">file_profiles</span><span class="o">=</span><span class="s2">&quot;data/profiles.json&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">file_output</span><span class="o">=</span><span class="s2">&quot;output/conversations.json&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">model_client</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;gpt-4&quot;</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="n">model_advisor</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;gpt-4&quot;</span><span class="p">}</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="ow">not</span> <span class="n">errors</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Configuration is valid!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>This updates only the parameters specified in kwargs; other parameters</p></li>
+</ul>
+<p>retain their current values.
+- See the Config class for a complete list of valid parameters.</p>
+</dd></dl>
+
+</section>
+<section id="get-config">
+<h3>get_config<a class="headerlink" href="#get-config" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.get_config">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.</span></span><span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/wizardsdata/config.html#get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.get_config" title="Link to this definition"></a></dt>
+<dd><p>Get the current global configuration.</p>
+<p>This function retrieves all current configuration parameters from the global
+Config instance, including both explicitly set values and default values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary with all configuration parameters.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>, Any]</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">full_config</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Client temperature: </span><span class="si">{</span><span class="n">full_config</span><span class="p">[</span><span class="s1">&#39;temperature_client&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get specific parameters directly from the config instance</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">wizardsdata.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;API Key: </span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;API_KEY&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="is-config-valid">
+<h3>is_config_valid<a class="headerlink" href="#is-config-valid" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.is_config_valid">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.</span></span><span class="sig-name descname"><span class="pre">is_config_valid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="_modules/wizardsdata/config.html#is_config_valid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.is_config_valid" title="Link to this definition"></a></dt>
+<dd><p>Check if the current global configuration is valid.</p>
+<p>This function checks if all mandatory parameters are set and if specified
+file paths exist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the configuration is valid, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="ow">not</span> <span class="n">is_config_valid</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please set all required configuration parameters&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1"># Show what&#39;s missing</span>
+<span class="gp">... </span>    <span class="kn">from</span><span class="w"> </span><span class="nn">wizardsdata.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Missing: </span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>Mandatory parameters are defined in Config.MANDATORY_PARAMS</p></li>
+<li><p>The function also checks if specified file paths exist</p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="save-config">
+<h3>save_config<a class="headerlink" href="#save-config" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.save_config">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.</span></span><span class="sig-name descname"><span class="pre">save_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="_modules/wizardsdata/config.html#save_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.save_config" title="Link to this definition"></a></dt>
+<dd><p>Save the current global configuration to a JSON file.</p>
+<p>This function exports all configuration parameters (including defaults)
+to a specified JSON file for later reuse.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Path where the configuration file will be saved.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the save operation was successful, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">success</span> <span class="o">=</span> <span class="n">save_config</span><span class="p">(</span><span class="s2">&quot;config/my_project_config.json&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Configuration saved successfully!&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Failed to save configuration&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The saved file uses JSON format with 4-space indentation</p></li>
+<li><p>Both explicitly set and default values are saved</p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="load-config">
+<h3>load_config<a class="headerlink" href="#load-config" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.load_config">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.</span></span><span class="sig-name descname"><span class="pre">load_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="_modules/wizardsdata/config.html#load_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.load_config" title="Link to this definition"></a></dt>
+<dd><p>Load a configuration from a JSON file into the global config instance.</p>
+<p>This function reads a previously saved configuration file and updates
+the global Config instance with those values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Path to the configuration JSON file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the load operation was successful, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">success</span> <span class="o">=</span> <span class="n">load_config</span><span class="p">(</span><span class="s2">&quot;config/my_project_config.json&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Configuration loaded successfully!&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1"># Check if it&#39;s complete</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">is_config_valid</span><span class="p">():</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;And it&#39;s valid!&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Failed to load configuration&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>This overwrites any previously set parameters with values from the file</p></li>
+<li><p>Parameters not specified in the file retain their current values</p></li>
+<li><p>The function silently catches and handles any exceptions during loading.</p></li>
+</ul>
+</dd></dl>
+
+</section>
+</section>
+<section id="generation-functions">
+<h2>Generation Functions<a class="headerlink" href="#generation-functions" title="Link to this heading"></a></h2>
+<section id="start-generation">
+<h3>start_generation<a class="headerlink" href="#start-generation" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.start_generation">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.</span></span><span class="sig-name descname"><span class="pre">start_generation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="_modules/wizardsdata/generator.html#start_generation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.start_generation" title="Link to this definition"></a></dt>
+<dd><p>Start generating conversations between roles based on the current configuration.</p>
+<p>This function orchestrates the entire conversation generation process. It:
+1. Validates the current configuration
+2. Initializes the API clients
+3. Loads conversation profiles from the configured file
+4. Renders prompts for each profile
+5. Generates conversations for each profile using the appropriate models
+6. Saves all conversations to the configured output file</p>
+<p>The function relies on the global configuration instance having all necessary
+parameters properly set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the generation process completed successfully, False otherwise.
+Returns False in the following cases:
+- Invalid configuration (missing parameters)
+- No profiles found in the profile file
+- Failure to render prompts
+- Error during API calls
+- Failure to save conversations</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Before calling this function, ensure all required configuration parameters are set:
+- API_KEY: Required for API access
+- template_client_prompt: Path to client prompt template
+- template_advisor_prompt: Path to advisor prompt template
+- file_profiles: Path to JSON file containing conversation profiles
+- file_output: Path where generated conversations will be saved
+- model_client: Model configuration for client responses
+- model_advisor: Model configuration for advisor responses</p>
+<p>The function will log progress and error information to standard output.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">wizardsdata.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_config</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">wizardsdata.generator</span><span class="w"> </span><span class="kn">import</span> <span class="n">start_generation</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Set up configuration</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">errors</span> <span class="o">=</span> <span class="n">set_config</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">API_KEY</span><span class="o">=</span><span class="s2">&quot;your-api-key&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">template_client_prompt</span><span class="o">=</span><span class="s2">&quot;templates/client.txt&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">template_advisor_prompt</span><span class="o">=</span><span class="s2">&quot;templates/advisor.txt&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">file_profiles</span><span class="o">=</span><span class="s2">&quot;data/profiles.json&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">file_output</span><span class="o">=</span><span class="s2">&quot;output/conversations.json&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">model_client</span><span class="o">=</span><span class="s2">&quot;gpt-4&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">model_advisor</span><span class="o">=</span><span class="s2">&quot;gpt-4&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="ow">not</span> <span class="n">errors</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="c1"># Start generation</span>
+<span class="gp">... </span>    <span class="n">success</span> <span class="o">=</span> <span class="n">start_generation</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Generation completed successfully!&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Generation failed.&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid configuration: </span><span class="si">{</span><span class="n">errors</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+<section id="module-details">
+<h2>Module Details<a class="headerlink" href="#module-details" title="Link to this heading"></a></h2>
+<section id="module-wizardsdata.config">
+<span id="config-module"></span><h3>Config Module<a class="headerlink" href="#module-wizardsdata.config" title="Link to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="wizardsdata.config.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wizardsdata.config.</span></span><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="_modules/wizardsdata/config.html#Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.config.Config" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Configuration manager for the WizardSData conversation generation system.
+This class handles all configuration parameters needed for generating conversations
+between clients and advisors, providing methods for setting, retrieving, and validating
+configuration values.
+:ivar MANDATORY_PARAMS: Required configuration parameters that must be set before use.
+:vartype MANDATORY_PARAMS: set
+:ivar DEFAULT_CONFIG: Default values for optional parameters.
+:vartype DEFAULT_CONFIG: dict</p>
+<dl class="simple">
+<dt>Configuration Parameters:</dt><dd><p>API_KEY (str): API key for accessing external language model services.
+template_client_prompt (str): File path to the template used for client prompts.
+template_advisor_prompt (str): File path to the template used for advisor prompts.
+file_profiles (str): File path to the JSON containing conversation profiles.
+file_output (str): File path where generated conversations will be saved.
+model_client (dict): Model configuration for client responses.
+model_advisor (dict): Model configuration for advisor responses.
+Optional parameters with defaults:
+temperature_client (float): Temperature for client model sampling (default: 0.7).
+top_p_client (float): Top-p value for client model sampling (default: 0.95).
+frequency_penalty_client (float): Frequency penalty for client model (default: 0.3).
+max_tokens_client (int): Maximum tokens for client responses (default: 175).
+max_recommended_questions (int): Maximum recommended questions to generate (default: 10).
+temperature_advisor (float): Temperature for advisor model sampling (default: 0.5).
+top_p_advisor (float): Top-p value for advisor model sampling (default: 0.9).
+frequency_penalty_advisor (float): Frequency penalty for advisor model (default: 0.1).
+max_tokens_advisor (int): Maximum tokens for advisor responses (default: 325).</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">config</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">API_KEY</span><span class="o">=</span><span class="s2">&quot;your-api-key&quot;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="n">template_client_prompt</span><span class="o">=</span><span class="s2">&quot;path/to/client_template.txt&quot;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="n">template_advisor_prompt</span><span class="o">=</span><span class="s2">&quot;path/to/advisor_template.txt&quot;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="n">file_profiles</span><span class="o">=</span><span class="s2">&quot;path/to/profiles.json&quot;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="n">file_output</span><span class="o">=</span><span class="s2">&quot;path/to/output.json&quot;</span><span class="p">,</span>
+<span class="gp">... </span>          <span class="n">model_client</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;gpt-4&quot;</span><span class="p">},</span>
+<span class="gp">... </span>          <span class="n">model_advisor</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;gpt-4&quot;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Configuration is valid!&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Missing parameters: </span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="go"># Get specific configuration parameters</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">client_temp</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;temperature_client&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">all_params</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get_all</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The validate() method checks if all mandatory parameters are set and if
+specified file paths exist.</p></li>
+<li><p>Configuration parameters can be overridden by calling set() multiple times.</p></li>
+</ul>
+<p>Initialize the configuration with default values.
+This method initializes a new configuration object with the following steps:
+1. Creates an empty configuration dictionary (_config)
+2. Populates it with default values:</p>
+<blockquote>
+<div><p># Client configuration
+‘temperature_client’: 0.7,
+‘top_p_client’: 0.95,
+‘frequency_penalty_client’: 0.3,
+‘max_tokens_client’: 175,
+‘max_recommended_questions’: 10,</p>
+<p># Advisor configuration
+‘temperature_advisor’: 0.5,
+‘top_p_advisor’: 0.9,
+‘frequency_penalty_advisor’: 0.1,
+‘max_tokens_advisor’: 325,</p>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Initializes an empty set to track which parameters have been explicitly set
+by the user (_set_params)</p></li>
+</ol>
+<p>No parameters are required as it uses class-defined defaults.
+:returns: None</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="wizardsdata.config.Config.MANDATORY_PARAMS">
+<span class="sig-name descname"><span class="pre">MANDATORY_PARAMS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'API_KEY',</span> <span class="pre">'file_output',</span> <span class="pre">'file_profiles',</span> <span class="pre">'model_advisor',</span> <span class="pre">'model_client',</span> <span class="pre">'template_advisor_prompt',</span> <span class="pre">'template_client_prompt'}</span></em><a class="headerlink" href="#wizardsdata.config.Config.MANDATORY_PARAMS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="wizardsdata.config.Config.DEFAULT_CONFIG">
+<span class="sig-name descname"><span class="pre">DEFAULT_CONFIG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'frequency_penalty_advisor':</span> <span class="pre">0.1,</span> <span class="pre">'frequency_penalty_client':</span> <span class="pre">0.3,</span> <span class="pre">'max_recommended_questions':</span> <span class="pre">10,</span> <span class="pre">'max_tokens_advisor':</span> <span class="pre">325,</span> <span class="pre">'max_tokens_client':</span> <span class="pre">175,</span> <span class="pre">'temperature_advisor':</span> <span class="pre">0.5,</span> <span class="pre">'temperature_client':</span> <span class="pre">0.7,</span> <span class="pre">'top_p_advisor':</span> <span class="pre">0.9,</span> <span class="pre">'top_p_client':</span> <span class="pre">0.95}</span></em><a class="headerlink" href="#wizardsdata.config.Config.DEFAULT_CONFIG" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wizardsdata.config.Config.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/wizardsdata/config.html#Config.set"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.config.Config.set" title="Link to this definition"></a></dt>
+<dd><p>Set a configuration parameter</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wizardsdata.config.Config.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></span><a class="reference internal" href="_modules/wizardsdata/config.html#Config.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.config.Config.get" title="Link to this definition"></a></dt>
+<dd><p>Get a configuration parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>param</strong> – Parameter name.</p></li>
+<li><p><strong>default</strong> – Default value if parameter doesn’t exist.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The parameter value or the default value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wizardsdata.config.Config.get_all">
+<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/wizardsdata/config.html#Config.get_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.config.Config.get_all" title="Link to this definition"></a></dt>
+<dd><p>Get all configuration parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary with all parameters.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wizardsdata.config.Config.validate">
+<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/wizardsdata/config.html#Config.validate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.config.Config.validate" title="Link to this definition"></a></dt>
+<dd><p>Validate the configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of missing mandatory parameters.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wizardsdata.config.Config.is_valid">
+<span class="sig-name descname"><span class="pre">is_valid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="_modules/wizardsdata/config.html#Config.is_valid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.config.Config.is_valid" title="Link to this definition"></a></dt>
+<dd><p>Check if configuration is valid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if valid, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.config.set_config">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.config.</span></span><span class="sig-name descname"><span class="pre">set_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/wizardsdata/config.html#set_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.config.set_config" title="Link to this definition"></a></dt>
+<dd><p>Set global configuration parameters and validate the resulting configuration.</p>
+<p>This function provides a convenient interface to set parameters in the global
+Config instance. After setting the provided parameters, it automatically
+validates the configuration and returns any validation errors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>**kwargs</strong> – Key-value pairs for configuration parameters.</p></li>
+<li><p><strong>Parameters</strong> (<em>Configuration</em>)</p></li>
+<li><p><strong>API_KEY</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – API key for accessing external language model services.</p></li>
+<li><p><strong>template_client_prompt</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – File path to the template used for client prompts.</p></li>
+<li><p><strong>template_advisor_prompt</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – File path to the template used for advisor prompts.</p></li>
+<li><p><strong>file_profiles</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – File path to the JSON containing conversation profiles.</p></li>
+<li><p><strong>file_output</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – File path where generated conversations will be saved.</p></li>
+<li><p><strong>model_client</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – Model configuration for client responses.</p></li>
+<li><p><strong>model_advisor</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – Model configuration for advisor responses.</p></li>
+<li><p><strong>defaults</strong> (<em>Optional parameters with</em>)</p></li>
+<li><p><strong>temperature_client</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Temperature for client model sampling (default: 0.7).</p></li>
+<li><p><strong>top_p_client</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Top-p value for client model sampling (default: 0.95).</p></li>
+<li><p><strong>frequency_penalty_client</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Frequency penalty for client model (default: 0.3).</p></li>
+<li><p><strong>max_tokens_client</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Maximum tokens for client responses (default: 175).</p></li>
+<li><p><strong>max_recommended_questions</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Maximum recommended questions to generate (default: 10).</p></li>
+<li><p><strong>temperature_advisor</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Temperature for advisor model sampling (default: 0.5).</p></li>
+<li><p><strong>top_p_advisor</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Top-p value for advisor model sampling (default: 0.9).</p></li>
+<li><p><strong>frequency_penalty_advisor</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Frequency penalty for advisor model (default: 0.1).</p></li>
+<li><p><strong>max_tokens_advisor</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Maximum tokens for advisor responses (default: 325).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of validation errors. Empty list if configuration is valid.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>]</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Setting only partial mandatory parameters will return validation errors</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">errors</span> <span class="o">=</span> <span class="n">set_config</span><span class="p">(</span><span class="n">API_KEY</span><span class="o">=</span><span class="s2">&quot;my-api-key&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                    <span class="n">template_client_prompt</span><span class="o">=</span><span class="s2">&quot;templates/client.txt&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Configuration is incomplete: </span><span class="si">{</span><span class="n">errors</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1"># Output: Configuration is incomplete: [&#39;template_advisor_prompt&#39;, &#39;file_profiles&#39;, &#39;file_output&#39;, &#39;model_client&#39;, &#39;model_advisor&#39;]</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Setting all mandatory parameters for a valid configuration</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">errors</span> <span class="o">=</span> <span class="n">set_config</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">API_KEY</span><span class="o">=</span><span class="s2">&quot;my-api-key&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">template_client_prompt</span><span class="o">=</span><span class="s2">&quot;templates/client.txt&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">template_advisor_prompt</span><span class="o">=</span><span class="s2">&quot;templates/advisor.txt&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">file_profiles</span><span class="o">=</span><span class="s2">&quot;data/profiles.json&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">file_output</span><span class="o">=</span><span class="s2">&quot;output/conversations.json&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">model_client</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;gpt-4&quot;</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="n">model_advisor</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;gpt-4&quot;</span><span class="p">}</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="ow">not</span> <span class="n">errors</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Configuration is valid!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>This updates only the parameters specified in kwargs; other parameters</p></li>
+</ul>
+<p>retain their current values.
+- See the Config class for a complete list of valid parameters.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.config.get_config">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.config.</span></span><span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/wizardsdata/config.html#get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.config.get_config" title="Link to this definition"></a></dt>
+<dd><p>Get the current global configuration.</p>
+<p>This function retrieves all current configuration parameters from the global
+Config instance, including both explicitly set values and default values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary with all configuration parameters.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>, Any]</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">full_config</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Client temperature: </span><span class="si">{</span><span class="n">full_config</span><span class="p">[</span><span class="s1">&#39;temperature_client&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get specific parameters directly from the config instance</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">wizardsdata.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;API Key: </span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;API_KEY&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.config.is_config_valid">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.config.</span></span><span class="sig-name descname"><span class="pre">is_config_valid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="_modules/wizardsdata/config.html#is_config_valid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.config.is_config_valid" title="Link to this definition"></a></dt>
+<dd><p>Check if the current global configuration is valid.</p>
+<p>This function checks if all mandatory parameters are set and if specified
+file paths exist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the configuration is valid, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="ow">not</span> <span class="n">is_config_valid</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please set all required configuration parameters&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1"># Show what&#39;s missing</span>
+<span class="gp">... </span>    <span class="kn">from</span><span class="w"> </span><span class="nn">wizardsdata.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">config</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Missing: </span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>Mandatory parameters are defined in Config.MANDATORY_PARAMS</p></li>
+<li><p>The function also checks if specified file paths exist</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.config.save_config">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.config.</span></span><span class="sig-name descname"><span class="pre">save_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="_modules/wizardsdata/config.html#save_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.config.save_config" title="Link to this definition"></a></dt>
+<dd><p>Save the current global configuration to a JSON file.</p>
+<p>This function exports all configuration parameters (including defaults)
+to a specified JSON file for later reuse.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Path where the configuration file will be saved.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the save operation was successful, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">success</span> <span class="o">=</span> <span class="n">save_config</span><span class="p">(</span><span class="s2">&quot;config/my_project_config.json&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Configuration saved successfully!&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Failed to save configuration&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The saved file uses JSON format with 4-space indentation</p></li>
+<li><p>Both explicitly set and default values are saved</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.config.load_config">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.config.</span></span><span class="sig-name descname"><span class="pre">load_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="_modules/wizardsdata/config.html#load_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.config.load_config" title="Link to this definition"></a></dt>
+<dd><p>Load a configuration from a JSON file into the global config instance.</p>
+<p>This function reads a previously saved configuration file and updates
+the global Config instance with those values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Path to the configuration JSON file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the load operation was successful, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">success</span> <span class="o">=</span> <span class="n">load_config</span><span class="p">(</span><span class="s2">&quot;config/my_project_config.json&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Configuration loaded successfully!&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1"># Check if it&#39;s complete</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">is_config_valid</span><span class="p">():</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;And it&#39;s valid!&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Failed to load configuration&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>This overwrites any previously set parameters with values from the file</p></li>
+<li><p>Parameters not specified in the file retain their current values</p></li>
+<li><p>The function silently catches and handles any exceptions during loading.</p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="module-wizardsdata.generator">
+<span id="generator-module"></span><h3>Generator Module<a class="headerlink" href="#module-wizardsdata.generator" title="Link to this heading"></a></h3>
+<p>Conversation generator for WizardSData.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.generator.initialize_apis">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.generator.</span></span><span class="sig-name descname"><span class="pre">initialize_apis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a></span></span><a class="reference internal" href="_modules/wizardsdata/generator.html#initialize_apis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.generator.initialize_apis" title="Link to this definition"></a></dt>
+<dd><p>Initialize API clients for OpenAI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>api_key</strong> – Optional API key to use. If None, uses the one from config.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple with (client_api, advisor_api)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.generator.get_model_response">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.generator.</span></span><span class="sig-name descname"><span class="pre">get_model_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">messages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency_penalty</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_tokens</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/wizardsdata/generator.html#get_model_response"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.generator.get_model_response" title="Link to this definition"></a></dt>
+<dd><p>Get response from a model using the OpenAI API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>api_client</strong> – OpenAI client instance.</p></li>
+<li><p><strong>model</strong> – Model name to use.</p></li>
+<li><p><strong>messages</strong> – List of message dictionaries (role and content).</p></li>
+<li><p><strong>temperature</strong> – Temperature setting for response randomness.</p></li>
+<li><p><strong>top_p</strong> – Top p setting for response diversity.</p></li>
+<li><p><strong>frequency_penalty</strong> – Frequency penalty to apply.</p></li>
+<li><p><strong>max_tokens</strong> – Maximum number of tokens to generate.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The generated response as a string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.generator.save_conversation">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.generator.</span></span><span class="sig-name descname"><span class="pre">save_conversation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conversations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="_modules/wizardsdata/generator.html#save_conversation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.generator.save_conversation" title="Link to this definition"></a></dt>
+<dd><p>Save the conversation dataset to a JSON file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>conversations</strong> – List of conversation dictionaries.</p></li>
+<li><p><strong>file_path</strong> – Path to save the conversations.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if successful, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.generator.initiate_conversation">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.generator.</span></span><span class="sig-name descname"><span class="pre">initiate_conversation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client_prompt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">advisor_prompt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">financial_goal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_api</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">advisor_api</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_questions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/wizardsdata/generator.html#initiate_conversation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.generator.initiate_conversation" title="Link to this definition"></a></dt>
+<dd><p>Initiate a continuous conversation between client and advisor models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client_prompt</strong> – System prompt for the client model.</p></li>
+<li><p><strong>advisor_prompt</strong> – System prompt for the advisor model.</p></li>
+<li><p><strong>financial_goal</strong> – Financial goal for this conversation.</p></li>
+<li><p><strong>client_api</strong> – OpenAI client for the client model.</p></li>
+<li><p><strong>advisor_api</strong> – OpenAI client for the advisor model.</p></li>
+<li><p><strong>max_questions</strong> – Maximum number of interactions.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of dictionaries representing the conversation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.generator.start_generation">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.generator.</span></span><span class="sig-name descname"><span class="pre">start_generation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="_modules/wizardsdata/generator.html#start_generation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.generator.start_generation" title="Link to this definition"></a></dt>
+<dd><p>Start generating conversations between roles based on the current configuration.</p>
+<p>This function orchestrates the entire conversation generation process. It:
+1. Validates the current configuration
+2. Initializes the API clients
+3. Loads conversation profiles from the configured file
+4. Renders prompts for each profile
+5. Generates conversations for each profile using the appropriate models
+6. Saves all conversations to the configured output file</p>
+<p>The function relies on the global configuration instance having all necessary
+parameters properly set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the generation process completed successfully, False otherwise.
+Returns False in the following cases:
+- Invalid configuration (missing parameters)
+- No profiles found in the profile file
+- Failure to render prompts
+- Error during API calls
+- Failure to save conversations</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Before calling this function, ensure all required configuration parameters are set:
+- API_KEY: Required for API access
+- template_client_prompt: Path to client prompt template
+- template_advisor_prompt: Path to advisor prompt template
+- file_profiles: Path to JSON file containing conversation profiles
+- file_output: Path where generated conversations will be saved
+- model_client: Model configuration for client responses
+- model_advisor: Model configuration for advisor responses</p>
+<p>The function will log progress and error information to standard output.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">wizardsdata.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_config</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">wizardsdata.generator</span><span class="w"> </span><span class="kn">import</span> <span class="n">start_generation</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Set up configuration</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">errors</span> <span class="o">=</span> <span class="n">set_config</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">API_KEY</span><span class="o">=</span><span class="s2">&quot;your-api-key&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">template_client_prompt</span><span class="o">=</span><span class="s2">&quot;templates/client.txt&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">template_advisor_prompt</span><span class="o">=</span><span class="s2">&quot;templates/advisor.txt&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">file_profiles</span><span class="o">=</span><span class="s2">&quot;data/profiles.json&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">file_output</span><span class="o">=</span><span class="s2">&quot;output/conversations.json&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">model_client</span><span class="o">=</span><span class="s2">&quot;gpt-4&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">model_advisor</span><span class="o">=</span><span class="s2">&quot;gpt-4&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="ow">not</span> <span class="n">errors</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="c1"># Start generation</span>
+<span class="gp">... </span>    <span class="n">success</span> <span class="o">=</span> <span class="n">start_generation</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Generation completed successfully!&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Generation failed.&quot;</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid configuration: </span><span class="si">{</span><span class="n">errors</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-wizardsdata.templates">
+<span id="templates-module"></span><h3>Templates Module<a class="headerlink" href="#module-wizardsdata.templates" title="Link to this heading"></a></h3>
+<p>Template handling for WizardSData.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.templates.render_prompt_from_path">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.templates.</span></span><span class="sig-name descname"><span class="pre">render_prompt_from_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">profile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/wizardsdata/templates.html#render_prompt_from_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.templates.render_prompt_from_path" title="Link to this definition"></a></dt>
+<dd><p>Render a prompt template from a specific file path with the given profile and additional variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>template_path</strong> – Path to the template file.</p></li>
+<li><p><strong>profile</strong> – Dictionary with profile data.</p></li>
+<li><p><strong>**kwargs</strong> – Additional variables to use in the template.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The rendered template as a string, or empty string if failed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-wizardsdata.utils">
+<span id="utilities-module"></span><h3>Utilities Module<a class="headerlink" href="#module-wizardsdata.utils" title="Link to this heading"></a></h3>
+<p>Utility functions for WizardSData.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.utils.ensure_directory_exists">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.utils.</span></span><span class="sig-name descname"><span class="pre">ensure_directory_exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="_modules/wizardsdata/utils.html#ensure_directory_exists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.utils.ensure_directory_exists" title="Link to this definition"></a></dt>
+<dd><p>Ensure the directory for a file exists, creating it if necessary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> – Path to the file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if directory exists or was created, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.utils.load_json">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.utils.</span></span><span class="sig-name descname"><span class="pre">load_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/wizardsdata/utils.html#load_json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.utils.load_json" title="Link to this definition"></a></dt>
+<dd><p>Load JSON data from a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> – Path to the JSON file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary with JSON data, or None if failed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.utils.save_json">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.utils.</span></span><span class="sig-name descname"><span class="pre">save_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="_modules/wizardsdata/utils.html#save_json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.utils.save_json" title="Link to this definition"></a></dt>
+<dd><p>Save data to a JSON file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Data to save.</p></li>
+<li><p><strong>file_path</strong> – Path to save the JSON file.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if successful, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-wizardsdata.cli">
+<span id="cli-module"></span><h3>CLI Module<a class="headerlink" href="#module-wizardsdata.cli" title="Link to this heading"></a></h3>
+<p>Command-line interface for WizardSData.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.cli.parse_args">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.cli.</span></span><span class="sig-name descname"><span class="pre">parse_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wizardsdata/cli.html#parse_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.cli.parse_args" title="Link to this definition"></a></dt>
+<dd><p>Parse command line arguments.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.cli.clean_args">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.cli.</span></span><span class="sig-name descname"><span class="pre">clean_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/wizardsdata/cli.html#clean_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.cli.clean_args" title="Link to this definition"></a></dt>
+<dd><p>Clean argument dictionary by removing None values.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wizardsdata.cli.main">
+<span class="sig-prename descclassname"><span class="pre">wizardsdata.cli.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wizardsdata/cli.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.cli.main" title="Link to this definition"></a></dt>
+<dd><p>Run the command-line interface.</p>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="usage.html" class="btn btn-neutral float-left" title="Usage Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Your Name.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
