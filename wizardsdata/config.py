@@ -46,10 +46,12 @@ class Config:
         # Get specific configuration parameters
         >>> client_temp = config.get("temperature_client")
         >>> all_params = config.get_all()
+
     Notes:
         - The validate() method checks if all mandatory parameters are set and if
           specified file paths exist.
         - Configuration parameters can be overridden by calling set() multiple times.
+
     """
     
     # Define mandatory parameters
@@ -180,62 +182,63 @@ config = Config()
 
 def set_config(**kwargs) -> List[str]:
     """
-        Set global configuration parameters and validate the resulting configuration.
+    Set global configuration parameters and validate the resulting configuration.
+
+    This function provides a convenient interface to set parameters in the global
+    Config instance. After setting the provided parameters, it automatically
+    validates the configuration and returns any validation errors.
     
-        This function provides a convenient interface to set parameters in the global
-        Config instance. After setting the provided parameters, it automatically
-        validates the configuration and returns any validation errors.
+    Args:
+        **kwargs: Key-value pairs for configuration parameters. 
+        Configuration Parameters:
+        API_KEY (str): API key for accessing external language model services.
+        template_client_prompt (str): File path to the template used for client prompts.
+        template_advisor_prompt (str): File path to the template used for advisor prompts.
+        file_profiles (str): File path to the JSON containing conversation profiles.
+        file_output (str): File path where generated conversations will be saved.
+        model_client (dict): Model configuration for client responses.
+        model_advisor (dict): Model configuration for advisor responses.
         
-        Args:
-            **kwargs: Key-value pairs for configuration parameters. 
-            Configuration Parameters:
-            API_KEY (str): API key for accessing external language model services.
-            template_client_prompt (str): File path to the template used for client prompts.
-            template_advisor_prompt (str): File path to the template used for advisor prompts.
-            file_profiles (str): File path to the JSON containing conversation profiles.
-            file_output (str): File path where generated conversations will be saved.
-            model_client (dict): Model configuration for client responses.
-            model_advisor (dict): Model configuration for advisor responses.
-            
-            Optional parameters with defaults:
-            temperature_client (float): Temperature for client model sampling (default: 0.7).
-            top_p_client (float): Top-p value for client model sampling (default: 0.95).
-            frequency_penalty_client (float): Frequency penalty for client model (default: 0.3).
-            max_tokens_client (int): Maximum tokens for client responses (default: 175).
-            max_recommended_questions (int): Maximum recommended questions to generate (default: 10).
-            temperature_advisor (float): Temperature for advisor model sampling (default: 0.5).
-            top_p_advisor (float): Top-p value for advisor model sampling (default: 0.9).
-            frequency_penalty_advisor (float): Frequency penalty for advisor model (default: 0.1).
-            max_tokens_advisor (int): Maximum tokens for advisor responses (default: 325).
+        Optional parameters with defaults:
+        temperature_client (float): Temperature for client model sampling (default: 0.7).
+        top_p_client (float): Top-p value for client model sampling (default: 0.95).
+        frequency_penalty_client (float): Frequency penalty for client model (default: 0.3).
+        max_tokens_client (int): Maximum tokens for client responses (default: 175).
+        max_recommended_questions (int): Maximum recommended questions to generate (default: 10).
+        temperature_advisor (float): Temperature for advisor model sampling (default: 0.5).
+        top_p_advisor (float): Top-p value for advisor model sampling (default: 0.9).
+        frequency_penalty_advisor (float): Frequency penalty for advisor model (default: 0.1).
+        max_tokens_advisor (int): Maximum tokens for advisor responses (default: 325).
+    
+    Returns:
+        List[str]: A list of validation errors. Empty list if configuration is valid.
         
-        Returns:
-            List[str]: A list of validation errors. Empty list if configuration is valid.
-            
-        Examples:
-            >>> # Setting only partial mandatory parameters will return validation errors
-            >>> errors = set_config(API_KEY="my-api-key", 
-            ...                     template_client_prompt="templates/client.txt")
-            >>> if errors:
-            ...     print(f"Configuration is incomplete: {errors}")
-            ...     # Output: Configuration is incomplete: ['template_advisor_prompt', 'file_profiles', 'file_output', 'model_client', 'model_advisor']
-            >>> 
-            >>> # Setting all mandatory parameters for a valid configuration
-            >>> errors = set_config(
-            ...     API_KEY="my-api-key",
-            ...     template_client_prompt="templates/client.txt",
-            ...     template_advisor_prompt="templates/advisor.txt",
-            ...     file_profiles="data/profiles.json",
-            ...     file_output="output/conversations.json",
-            ...     model_client={"name": "gpt-4"},
-            ...     model_advisor={"name": "gpt-4"}
-            ... )
-            >>> if not errors:
-            ...     print("Configuration is valid!")
-            
-        Notes:
-            - This updates only the parameters specified in kwargs; other parameters
-            retain their current values.
-            - See the Config class for a complete list of valid parameters.    
+    Examples:
+        >>> # Setting only partial mandatory parameters will return validation errors
+        >>> errors = set_config(API_KEY="my-api-key", 
+        ...                     template_client_prompt="templates/client.txt")
+        >>> if errors:
+        ...     print(f"Configuration is incomplete: {errors}")
+        ...     # Output: Configuration is incomplete: ['template_advisor_prompt', 'file_profiles', 'file_output', 'model_client', 'model_advisor']
+        >>> 
+        >>> # Setting all mandatory parameters for a valid configuration
+        >>> errors = set_config(
+        ...     API_KEY="my-api-key",
+        ...     template_client_prompt="templates/client.txt",
+        ...     template_advisor_prompt="templates/advisor.txt",
+        ...     file_profiles="data/profiles.json",
+        ...     file_output="output/conversations.json",
+        ...     model_client={"name": "gpt-4"},
+        ...     model_advisor={"name": "gpt-4"}
+        ... )
+        >>> if not errors:
+        ...     print("Configuration is valid!")
+        
+    Notes:
+        - This updates only the parameters specified in kwargs; other parameters
+        retain their current values.
+        - See the Config class for a complete list of valid parameters.  
+
     """
 
     
@@ -260,6 +263,7 @@ def get_config() -> Dict[str, Any]:
         >>> # Get specific parameters directly from the config instance
         >>> from wizardsdata.config import config
         >>> print(f"API Key: {config.get('API_KEY')}")
+
     """
     return config.get_all()
 
@@ -284,6 +288,7 @@ def is_config_valid() -> bool:
     Notes:
         - Mandatory parameters are defined in Config.MANDATORY_PARAMS
         - The function also checks if specified file paths exist
+
     """
     return config.is_valid()
 
@@ -311,6 +316,7 @@ def save_config(file_path: str) -> bool:
     Notes:
         - The saved file uses JSON format with 4-space indentation
         - Both explicitly set and default values are saved
+
     """
     try:
         with open(file_path, 'w') as f:
@@ -347,6 +353,7 @@ def load_config(file_path: str) -> bool:
         - This overwrites any previously set parameters with values from the file
         - Parameters not specified in the file retain their current values
         - The function silently catches and handles any exceptions during loading.
+
     """
     try:
         with open(file_path, 'r') as f:
