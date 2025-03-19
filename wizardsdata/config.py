@@ -322,7 +322,7 @@ def save_config(file_path: str) -> bool:
 
 def load_config(file_path: str) -> bool:
     """
-    Load configuration from a JSON file into the global config instance.
+    Load a configuration from a JSON file into the global config instance.
     
     This function reads a previously saved configuration file and updates
     the global Config instance with those values.
