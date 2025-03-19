@@ -1,6 +1,5 @@
 LICENSE
 README.md
-core.py
 pyproject.toml
 setup.py
 wizardsdata/__init__.py

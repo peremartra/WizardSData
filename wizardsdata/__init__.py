@@ -2,7 +2,7 @@
 WizardSData - A library for generating conversation datasets using language models.
 """
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 try:
     from .config import set_config, get_config, is_config_valid, save_config, load_config
