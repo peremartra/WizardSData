@@ -22,6 +22,8 @@ The library simulates a conversation between two people. One initiates the dialo
 
 For the library to start generating conversations, it requires a profiles file and two prompt templates. Each profile in the `profiles` file will define the personality or personalities part of the conversation. Different examples can be found in the `templates` directory.
 
+![How to Generate Syntetic Conversations](/images/wizardSdata_generation_process.png)
+
 A basic usage example can be found in `usage_examples/basic_usage.py`.
 
 ### Let's analyze one of the examples: financial01. 
