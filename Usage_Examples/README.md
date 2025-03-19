@@ -3,7 +3,7 @@
 This directory contains example use cases demonstrating how to generate synthetic datasets using the WizardSData library. These examples help users understand how different configurations, profile templates, and prompts contribute to dataset creation.
 
 ## **Current Examples**
-- **example_financial_dataset/**: Demonstrates how to generate a dataset for financial conversations using a structured approach with predefined profiles and prompt templates.
+- [**example_financial_dataset/**](https://github.com/peremartra/WizardSData/tree/main/Usage_Examples/example_financial_dataset): Demonstrates how to generate a dataset for financial conversations using a structured approach with predefined profiles and prompt templates.
 
 ## **Planned Additions**
 Future examples will cover:
