@@ -62,6 +62,7 @@ Table of Contents
    usage
    api
    examples
+   examples_gallery
 
 Indices and tables
 ==================

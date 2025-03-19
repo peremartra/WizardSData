@@ -24,7 +24,11 @@ extensions = [
     'sphinx.ext.napoleon',
     'sphinx.ext.intersphinx',
     'myst_parser',
+    'nbsphinx',
 ]
+
+# Configure nbsphinx
+nbsphinx_execute = 'never'  # Don't execute notebooks when building docs
 
 templates_path = ['_templates']
 exclude_patterns = []
