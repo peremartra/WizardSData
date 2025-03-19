@@ -157,6 +157,8 @@ The Jupyter Notebook illustrates:
 ---
 
 ### **How This Example Works**
+![How To Generate Syntetic Conversations](/images/wizardSdata_generation_process.png)
+
 Profiles from financial_sample01_5.json are loaded, containing a diverse range of financial personas. These profiles provide structured attributes such as age, marital status, profession, financial goals, investment horizon, and risk tolerance. They serve as the foundation for tailoring realistic financial conversations.
 
 Prompt templates (financial_client_01.j2 & financial_advisor_01.j2) use profile attributes dynamically to craft personalized dialogues. These templates guide both the client and advisor roles, ensuring a natural flow of conversation. The structure of these prompts allows for gradual information revelation, reflecting real-world financial advisory interactions.
