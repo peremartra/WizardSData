@@ -4,13 +4,8 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'wizardsdata/generator.py'
-      - 'wizardsdata/config.py'
       - 'docs/source/**'
-      - 'Usage_Examples/**'       # Example notebooks folder
-      - '**/*.ipynb'              # Any notebook files
-      - '**/*.rst'                # Any RST files
-      - '**/*.md'                 # Any Markdown files
+      - 'Usage_Examples/**'
       - '.github/workflows/docs.yml'
   workflow_dispatch:  # Allow manual trigger
 
@@ -20,14 +15,17 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-      
-    - name: Debug directory structure  # Add it here, after checkout
+      with:
+        fetch-depth: 0  # Fetch all history
+
+    - name: Debug information
       run: |
-        find . -name "*.ipynb" | sort
-        echo "Current directory: $(pwd)"
-        ls -la docs/source/
-        cat docs/source/examples.rst
-        ls -la Usage_Examples/ || echo "Usage_Examples directory not found"
+        echo "Repository contents:"
+        find . -type f -name "*.rst" | sort
+        echo "Examples directory:"
+        find . -path "*/Usage_Examples/*" | sort
+        echo "Content of examples.rst:"
+        cat docs/source/examples.rst || echo "File not found"
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -43,7 +41,10 @@ jobs:
     - name: Build documentation
       run: |
         cd docs
-        make html SPHINXOPTS="-v" 2>&1 | tee build_output.log
+        make clean
+        make html SPHINXOPTS="-v" > build_output.log 2>&1
+        echo "Last 50 lines of the build log:"
+        tail -n 50 build_output.log
 
     - name: Upload build log
       uses: actions/upload-artifact@v4
@@ -51,33 +52,9 @@ jobs:
         name: sphinx-build-log
         path: docs/build_output.log
 
-    - name: Copy documentation to docs folder
-      run: |
-        # Create backup of source files
-        mkdir -p /tmp/sphinx_source
-        cp -r docs/source /tmp/sphinx_source/
-        cp docs/Makefile /tmp/sphinx_source/
-        cp docs/make.bat /tmp/sphinx_source/ 2>/dev/null || true
-        
-        # Clear docs folder
-        rm -rf docs/*
-        
-        # Copy built documentation to docs folder
-        cp -r docs/build/html/* docs/
-        
-        # Add .nojekyll file to prevent Jekyll processing
-        touch docs/.nojekyll
-        
-        # Restore source directory and build files
-        mkdir -p docs/source
-        cp -r /tmp/sphinx_source/source/* docs/source/
-        cp /tmp/sphinx_source/Makefile docs/
-        [ -f /tmp/sphinx_source/make.bat ] && cp /tmp/sphinx_source/make.bat docs/
-
-    - name: Commit documentation changes
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add docs
-        git commit -m "Update documentation" || echo "No changes to commit"
-        git push
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs/build/html
+        force_orphan: true  # Use this to start fresh
