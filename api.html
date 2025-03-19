@@ -78,7 +78,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-details">Module Details</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#config-module">Config Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-wizardsdata.config">Config Module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#wizardsdata.config.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#wizardsdata.config.set_config"><code class="docutils literal notranslate"><span class="pre">set_config()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#wizardsdata.config.get_config"><code class="docutils literal notranslate"><span class="pre">get_config()</span></code></a></li>
@@ -87,7 +87,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#wizardsdata.config.load_config"><code class="docutils literal notranslate"><span class="pre">load_config()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#generator-module">Generator Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-wizardsdata.generator">Generator Module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#wizardsdata.generator.initialize_apis"><code class="docutils literal notranslate"><span class="pre">initialize_apis()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#wizardsdata.generator.get_model_response"><code class="docutils literal notranslate"><span class="pre">get_model_response()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#wizardsdata.generator.save_conversation"><code class="docutils literal notranslate"><span class="pre">save_conversation()</span></code></a></li>
@@ -95,17 +95,17 @@
 <li class="toctree-l4"><a class="reference internal" href="#wizardsdata.generator.start_generation"><code class="docutils literal notranslate"><span class="pre">start_generation()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#templates-module">Templates Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-wizardsdata.templates">Templates Module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#wizardsdata.templates.render_prompt_from_path"><code class="docutils literal notranslate"><span class="pre">render_prompt_from_path()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#utilities-module">Utilities Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-wizardsdata.utils">Utilities Module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#wizardsdata.utils.ensure_directory_exists"><code class="docutils literal notranslate"><span class="pre">ensure_directory_exists()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#wizardsdata.utils.load_json"><code class="docutils literal notranslate"><span class="pre">load_json()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#wizardsdata.utils.save_json"><code class="docutils literal notranslate"><span class="pre">save_json()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#cli-module">CLI Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-wizardsdata.cli">CLI Module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#wizardsdata.cli.parse_args"><code class="docutils literal notranslate"><span class="pre">parse_args()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#wizardsdata.cli.clean_args"><code class="docutils literal notranslate"><span class="pre">clean_args()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#wizardsdata.cli.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
@@ -426,9 +426,9 @@ Returns False in the following cases:
 </section>
 <section id="module-details">
 <h2>Module Details<a class="headerlink" href="#module-details" title="Link to this heading"></a></h2>
-<section id="config-module">
-<h3>Config Module<a class="headerlink" href="#config-module" title="Link to this heading"></a></h3>
-<dl class="py class" id="module-wizardsdata.config">
+<section id="module-wizardsdata.config">
+<span id="config-module"></span><h3>Config Module<a class="headerlink" href="#module-wizardsdata.config" title="Link to this heading"></a></h3>
+<dl class="py class">
 <dt class="sig sig-object py" id="wizardsdata.config.Config">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wizardsdata.config.</span></span><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="_modules/wizardsdata/config.html#Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.config.Config" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
@@ -766,9 +766,9 @@ the global Config instance with those values.</p>
 </dd></dl>
 
 </section>
-<section id="generator-module">
-<h3>Generator Module<a class="headerlink" href="#generator-module" title="Link to this heading"></a></h3>
-<p id="module-wizardsdata.generator">Conversation generator for WizardSData.</p>
+<section id="module-wizardsdata.generator">
+<span id="generator-module"></span><h3>Generator Module<a class="headerlink" href="#module-wizardsdata.generator" title="Link to this heading"></a></h3>
+<p>Conversation generator for WizardSData.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="wizardsdata.generator.initialize_apis">
 <span class="sig-prename descclassname"><span class="pre">wizardsdata.generator.</span></span><span class="sig-name descname"><span class="pre">initialize_apis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><span class="pre">tuple</span></a></span></span><a class="reference internal" href="_modules/wizardsdata/generator.html#initialize_apis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.generator.initialize_apis" title="Link to this definition"></a></dt>
@@ -909,9 +909,9 @@ Returns False in the following cases:
 </dd></dl>
 
 </section>
-<section id="templates-module">
-<h3>Templates Module<a class="headerlink" href="#templates-module" title="Link to this heading"></a></h3>
-<p id="module-wizardsdata.templates">Template handling for WizardSData.</p>
+<section id="module-wizardsdata.templates">
+<span id="templates-module"></span><h3>Templates Module<a class="headerlink" href="#module-wizardsdata.templates" title="Link to this heading"></a></h3>
+<p>Template handling for WizardSData.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="wizardsdata.templates.render_prompt_from_path">
 <span class="sig-prename descclassname"><span class="pre">wizardsdata.templates.</span></span><span class="sig-name descname"><span class="pre">render_prompt_from_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">profile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/wizardsdata/templates.html#render_prompt_from_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.templates.render_prompt_from_path" title="Link to this definition"></a></dt>
@@ -931,9 +931,9 @@ Returns False in the following cases:
 </dd></dl>
 
 </section>
-<section id="utilities-module">
-<h3>Utilities Module<a class="headerlink" href="#utilities-module" title="Link to this heading"></a></h3>
-<p id="module-wizardsdata.utils">Utility functions for WizardSData.</p>
+<section id="module-wizardsdata.utils">
+<span id="utilities-module"></span><h3>Utilities Module<a class="headerlink" href="#module-wizardsdata.utils" title="Link to this heading"></a></h3>
+<p>Utility functions for WizardSData.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="wizardsdata.utils.ensure_directory_exists">
 <span class="sig-prename descclassname"><span class="pre">wizardsdata.utils.</span></span><span class="sig-name descname"><span class="pre">ensure_directory_exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="_modules/wizardsdata/utils.html#ensure_directory_exists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.utils.ensure_directory_exists" title="Link to this definition"></a></dt>
@@ -980,9 +980,9 @@ Returns False in the following cases:
 </dd></dl>
 
 </section>
-<section id="cli-module">
-<h3>CLI Module<a class="headerlink" href="#cli-module" title="Link to this heading"></a></h3>
-<p id="module-wizardsdata.cli">Command-line interface for WizardSData.</p>
+<section id="module-wizardsdata.cli">
+<span id="cli-module"></span><h3>CLI Module<a class="headerlink" href="#module-wizardsdata.cli" title="Link to this heading"></a></h3>
+<p>Command-line interface for WizardSData.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="wizardsdata.cli.parse_args">
 <span class="sig-prename descclassname"><span class="pre">wizardsdata.cli.</span></span><span class="sig-name descname"><span class="pre">parse_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wizardsdata/cli.html#parse_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wizardsdata.cli.parse_args" title="Link to this definition"></a></dt>
