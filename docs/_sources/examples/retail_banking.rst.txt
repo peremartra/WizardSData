@@ -1,4 +1,7 @@
 Retail Banking Example
 =====================
 
-.. nbsphinx:: ../../../Usage_Examples/example_financial_dataset/example_retail_banking.ipynb
+.. toctree::
+   :maxdepth: 1
+
+   ../notebooks/example_retail_banking
