@@ -2,6 +2,7 @@
     "profiles": [
         {
             "id": 1,
+            "topic": "Financial Planning",
             "age": 30,
             "marital_status": "Single",
             "country": "Spain",
@@ -9,7 +10,7 @@
             "profession": "Software Developer",
             "employment_status": "Freelance",
             "financial_products": ["Savings account", "Tech stocks"],
-            "financial_goal": "Save for house deposit",
+            "financial_goal": "Save for house purchase",
             "investment_horizon": "Medium-term",
             "risk_tolerance": "High",
             "financial_knowledge": "Low"

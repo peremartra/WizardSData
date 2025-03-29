@@ -1,4 +1,3 @@
-
 # WizardSData
 
 ![Generate Syntetic Conversations](/images/wizardsdata_banner.png)
@@ -172,10 +171,27 @@ If you feel satisfied with the advice, end the conversation with "[END]".
 You can ask up to {{ max_questions }} questions.
 ```
 
-## Profile Format
+## Profile Configuration
 
-Profiles should be provided in JSON format:
+Profiles define the characteristics of the conversation participants. Each profile should include:
 
+- `id`: Unique identifier for the profile
+- `topic`: **(Recommended)** Conversation topic or subject area (e.g., "Retirement Planning", "Investment Strategies", "Career Development")
+- Additional fields specific to your use case
+
+**Note:** While `topic` is not required, it is strongly recommended as its value is stored in the generated dataset and is useful for categorizing and differentiating conversation types. If `topic` is not provided, the system will attempt to use `financial_goal` for backward compatibility, or default to "Unknown".
+
+Example profile:
+```json
+{
+  "id": "profile1",
+  "topic": "Retirement Planning",
+  "name": "Jane Smith",
+  "age": 42,
+  "background": "Tech professional considering early retirement"
+}
+```
+Example profile without `topic` in this case `financial_pgoal` will be used. 
 ```json
 {
   "profiles": [
@@ -197,8 +213,6 @@ Profiles should be provided in JSON format:
   ]
 }
 ```
-
-All fields, but `id` are optional and you can create your own fields. 
 
 ## Configuration Parameters
 

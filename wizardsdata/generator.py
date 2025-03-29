@@ -93,7 +93,7 @@ def save_conversation(conversations: List[Dict[str, Any]], file_path: str) -> bo
         print(f"Error saving conversations: {str(e)}")
         return False
 
-def initiate_conversation(client_prompt: str, advisor_prompt: str, financial_goal: str,
+def initiate_conversation(client_prompt: str, advisor_prompt: str, topic: str,
                           client_api, advisor_api, max_questions: int) -> List[Dict[str, Any]]:
     """
     Initiate a continuous conversation between client and advisor models.
@@ -101,7 +101,7 @@ def initiate_conversation(client_prompt: str, advisor_prompt: str, financial_goa
     Args:
         client_prompt: System prompt for the client model.
         advisor_prompt: System prompt for the advisor model.
-        financial_goal: Financial goal for this conversation.
+        topic: Topic for this conversation.
         client_api: OpenAI client for the client model.
         advisor_api: OpenAI client for the advisor model.
         max_questions: Maximum number of interactions.
@@ -147,7 +147,7 @@ def initiate_conversation(client_prompt: str, advisor_prompt: str, financial_goa
         # Add the client response to the dataset BEFORE checking for [END]
         conversation_dataset.append({
             "id_conversation": conversation_id,
-            "topic": financial_goal,
+            "topic": topic,
             "sequence": sequence,
             "rol1": client_response.replace("[END]", "").strip(),
             "rol2": ""  # Placeholder for advisor response
@@ -159,7 +159,7 @@ def initiate_conversation(client_prompt: str, advisor_prompt: str, financial_goa
 
         client_conversation.append({"role": "assistant", "content": client_response})
         advisor_conversation.append({"role": "user", "content": client_response})
-        sequence += 1
+        #sequence += 1
 
         # Advisor response
         advisor_response = get_model_response(
@@ -296,7 +296,7 @@ def start_generation() -> bool:
                 'profile_id': profile.get('id'),
                 'client_prompt': client_prompt,
                 'advisor_prompt': advisor_prompt,
-                'financial_goal': profile.get('financial_goal', 'Unknown')
+                'topic': profile.get('topic', profile.get('financial_goal', 'Unknown'))
             })
         
         # Generate conversations
@@ -305,7 +305,7 @@ def start_generation() -> bool:
             conversation = initiate_conversation(
                 prompt['client_prompt'],
                 prompt['advisor_prompt'],
-                prompt['financial_goal'],
+                prompt['topic'],
                 client_api,
                 advisor_api,
                 max_recommended_questions

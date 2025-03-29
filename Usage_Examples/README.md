@@ -17,3 +17,20 @@ Each example contains:
 3. The **generated dataset** in JSON format.
 
 Refer to individual example folders for specific details on each implementation.
+
+## Profile JSON Format
+
+When creating your profile JSON files, include the following fields:
+
+```json
+{
+  "profiles": [
+    {
+      "id": "unique_identifier",
+      "topic": "Main Conversation Topic",
+      "field1": "value1",
+      "field2": "value2"
+    }
+  ]
+}
+```

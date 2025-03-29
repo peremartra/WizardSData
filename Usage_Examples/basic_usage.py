@@ -4,7 +4,7 @@ Basic usage example for WizardSData.
 import os
 import sys
 import json
-
+from dotenv import load_dotenv
 
 # Add parent directory to path to import the library
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -13,13 +13,23 @@ import wizardsdata as wsd
 
 def main():
     """Example of using WizardSData."""
+    # Load environment variables from config.env
+    env_path = os.path.join(os.path.dirname(__file__), '..', 'config.env')
+    load_dotenv(env_path)
+    
+    # Get API key from environment
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        print("ERROR: OPENAI_API_KEY not found in environment variables. Check your config.env file.")
+        return
+    
     # Configure the library
     missing = wsd.set_config(
-        API_KEY="YOUR_API_KEY",  # Replace with your actual API key
+        API_KEY=api_key,  # Use API key from environment variable
         template_client_prompt="templates/financial01/prompts/financial_client_01.j2",
         template_advisor_prompt="templates/financial01/prompts/financial_advisor_01.j2",
-        file_profiles="templates/financial01/profiles/financial_sample01_1.json",
-        file_output="templates/financial01/outputs/test_dataset01_1.json",
+        file_profiles="templates/financial01/profiles/financial_sample01_5.json",
+        file_output="templates/financial01/outputs/test_dataset01_5.json",
         model_client="gpt-4o-mini",
         model_advisor="gpt-4o-mini",
         # Optional parameters with custom values
@@ -35,7 +45,9 @@ def main():
     # Display current configuration
     config = wsd.get_config()
     print("Current configuration:")
-    print(json.dumps(config, indent=2))
+    # Mask API key for security when printing
+    masked_config = {**config, "API_KEY": "********" if "API_KEY" in config else None}
+    print(json.dumps(masked_config, indent=2))
     
     # Check if configuration is valid
     if not wsd.is_config_valid():
