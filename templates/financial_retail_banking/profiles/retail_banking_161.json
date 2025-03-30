@@ -1,0 +1,40 @@
+{
+    "profiles": [
+        {
+            "id": 1,
+            "age": 30,
+            "gender": "Male",
+            "marital_status": "Single",
+            "country": "Spain",
+            "residence_area": "Urban",
+            "profession": "Software Developer",
+            "employment_status": "Freelance",
+            "financial_products": ["Savings account", "Tech stocks"],
+            "financial_goal": "Pay off mortgage within the next 5 years",
+            "topic": "Mortgages",
+            "investment_horizon": "Medium-term",
+            "risk_tolerance": "High",
+            "conversation_style": "Informal",
+            "financial_knowledge": "Low"
+        },
+        {
+            "id": 2,
+            "age": 23,
+            "gender": "Female",
+            "marital_status": "Married",
+            "country": "Italy",
+            "residence_area": "Rural",
+            "profession": "Architect",
+            "employment_status": "Part-time job",
+            "financial_products": [
+              "Savings account"
+            ],
+            "financial_goal": "Withdraw before maturity",
+            "topic": "Mortgages",
+            "investment_horizon": "Medium-term",
+            "risk_tolerance": "Medium",
+            "conversation_style": "Formal",
+            "financial_knowledge": "High"
+          }
+    ]
+}

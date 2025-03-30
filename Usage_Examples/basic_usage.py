@@ -5,7 +5,7 @@ import os
 import sys
 import json
 from dotenv import load_dotenv
-
+TEMPLATE_NAME= "templates/financial_retail_banking/"
 # Add parent directory to path to import the library
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
@@ -26,12 +26,12 @@ def main():
     # Configure the library
     missing = wsd.set_config(
         API_KEY=api_key,  # Use API key from environment variable
-        template_client_prompt="templates/financial01/prompts/financial_client_01.j2",
-        template_advisor_prompt="templates/financial01/prompts/financial_advisor_01.j2",
-        file_profiles="templates/financial01/profiles/financial_sample01_5.json",
-        file_output="templates/financial01/outputs/test_dataset01_5.json",
-        model_client="gpt-4o-mini",
-        model_advisor="gpt-4o-mini",
+        template_client_prompt=TEMPLATE_NAME + "prompts/financial_client_01.j2",
+        template_advisor_prompt=TEMPLATE_NAME + "prompts/financial_advisor_01.j2",
+        file_profiles=TEMPLATE_NAME + "profiles/retail_banking_5.json",
+        file_output=TEMPLATE_NAME + "outputs/test_dataset01_5b.json",
+        model_client="gpt-4o",
+        model_advisor="gpt-4o",
         # Optional parameters with custom values
         temperature_client=0.8,
         max_recommended_questions=10

@@ -153,10 +153,6 @@ def initiate_conversation(client_prompt: str, advisor_prompt: str, topic: str,
             "rol2": ""  # Placeholder for advisor response
         })
 
-        # Now check for [END] after adding to dataset
-        if "[END]" in client_response:
-            break
-
         client_conversation.append({"role": "assistant", "content": client_response})
         advisor_conversation.append({"role": "user", "content": client_response})
         #sequence += 1
@@ -178,7 +174,7 @@ def initiate_conversation(client_prompt: str, advisor_prompt: str, topic: str,
             conversation_dataset[-1]["rol2"] = advisor_response.replace("[END]", "").strip()
 
         # Now check for [END] after adding to dataset
-        if "[END]" in advisor_response:
+        if "[END]" in advisor_response or "[END]" in client_response:
             break
 
         advisor_conversation.append({"role": "assistant", "content": advisor_response})
@@ -296,7 +292,7 @@ def start_generation() -> bool:
                 'profile_id': profile.get('id'),
                 'client_prompt': client_prompt,
                 'advisor_prompt': advisor_prompt,
-                'topic': profile.get('topic', profile.get('financial_goal', 'Unknown'))
+                'topic': profile.get('topic', profile.get('financial_topic', 'unknown'))
             })
         
         # Generate conversations
