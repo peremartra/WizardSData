@@ -23,9 +23,11 @@ from dotenv import load_dotenv
 # Define the template directory
 TEMPLATE_NAME = "templates/financial_retail_banking/"
 
-# Add parent directory to path to import the library
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+# Explicitly point to the project root for importing wizardsdata
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
+sys.path.insert(0, PROJECT_ROOT)
 
+# Now import the library - this will use the latest version
 import wizardsdata as wsd
 
 def main():
@@ -68,16 +70,17 @@ def main():
         template_advisor_prompt=TEMPLATE_NAME + "prompts/financial_advisor_01.j2",
         
         # Input/Output file paths
-        file_profiles=TEMPLATE_NAME + "profiles/retail_banking_1.json",
-        file_output=TEMPLATE_NAME + "outputs/retail_banking_dataset_11.json",
+        file_profiles=TEMPLATE_NAME + "profiles/retail_banking_160.json",
+        file_output=TEMPLATE_NAME + "outputs/retail_banking_dataset_b.json",
         
         # Model configuration
         model_client="gpt-4o",
         model_advisor="gpt-4o",
         
         # Conversation parameters
-        temperature_client=0.8,
-        max_recommended_questions=4
+        temperature_client=0.6,
+        temperature_advisor=0.2,
+        max_recommended_questions=10
     )
     
     # Check for missing parameters

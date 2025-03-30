@@ -5,6 +5,7 @@ import os
 import sys
 import json
 from dotenv import load_dotenv
+TEMPLATE_NAME= "templates/financial01/"
 TEMPLATE_NAME= "templates/financial_retail_banking/"
 # Add parent directory to path to import the library
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -28,8 +29,8 @@ def main():
         API_KEY=api_key,  # Use API key from environment variable
         template_client_prompt=TEMPLATE_NAME + "prompts/financial_client_01.j2",
         template_advisor_prompt=TEMPLATE_NAME + "prompts/financial_advisor_01.j2",
-        file_profiles=TEMPLATE_NAME + "profiles/retail_banking_5.json",
-        file_output=TEMPLATE_NAME + "outputs/test_dataset01_5b.json",
+        file_profiles=TEMPLATE_NAME + "profiles/retail_banking_1.json",
+        file_output=TEMPLATE_NAME + "outputs/test_dataset01_1b.json",
         model_client="gpt-4o",
         model_advisor="gpt-4o",
         # Optional parameters with custom values
